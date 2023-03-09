@@ -16,9 +16,6 @@ if [[ "${#EXCLUDED_PACKAGES[@]}" -gt 0 ]]; then
     EXCLUDED_PACKAGES=($(rpm -qa --queryformat='%{NAME} ' ${EXCLUDED_PACKAGES[@]}))
 fi
 
-wget -P /tmp/rpms \
-    https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-${RELEASE}.noarch.rpm \
-    https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-${RELEASE}.noarch.rpm
 cd /etc/yum.repos.d/ && curl -LO https://pkgs.tailscale.com/stable/fedora/tailscale.repo
 cd /etc/yum.repos.d/ && curl -LO https://cli.github.com/packages/rpm/gh-cli.repo 
 
