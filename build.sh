@@ -49,11 +49,4 @@ if [[ "$RELEASE" -eq 37 ]] ; then
   rpm-ostree install \
     /tmp/rpms/*.rpm \
     fedora-repos-archive
-
-  rpm-ostree install zfs
-  for directory in /lib/modules/*; do
-    kernel_version=$(basename $directory)
-    dkms autoinstall -k $kernel_version
-  done
-
 fi
