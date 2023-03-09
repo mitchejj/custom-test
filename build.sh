@@ -21,14 +21,6 @@ fi
 cd /etc/yum.repos.d/ && curl -LO https://pkgs.tailscale.com/stable/fedora/tailscale.repo
 cd /etc/yum.repos.d/ && curl -LO https://cli.github.com/packages/rpm/gh-cli.repo 
 
-if [[ "$RELEASE" -eq 37 ]] ; then
-  wget -P /tmp/rpms \
-    https://zfsonlinux.org/fedora/zfs-release-2-2$(rpm --eval "%{dist}").noarch.rpm
-
-  rpm-ostree install \
-    /tmp/rpms/*.rpm \
-    fedora-repos-archive
-fi
 
 
 
@@ -47,5 +39,21 @@ elif [[ "${#INCLUDED_PACKAGES[@]}" -gt 0 && "${#EXCLUDED_PACKAGES[@]}" -gt 0 ]];
 
 else
     echo "No packages to install."
+fi
+
+
+if [[ "$RELEASE" -eq 37 ]] ; then
+  wget -P /tmp/rpms \
+    https://zfsonlinux.org/fedora/zfs-release-2-2$(rpm --eval "%{dist}").noarch.rpm
+
+  rpm-ostree install \
+    /tmp/rpms/*.rpm \
+    fedora-repos-archive
+
+  rpm-ostree install zfs
+  for directory in /lib/modules/*; do
+    kernel_version=$(basename $directory)
+    dkms autoinstall -k $kernel_version
+  done
 
 fi
