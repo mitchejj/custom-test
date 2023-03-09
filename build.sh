@@ -28,7 +28,7 @@ if [[ "$RELEASE" -eq 37 ]] ; then
   rpm-ostree install \
     /tmp/rpms/*.rpm \
     fedora-repos-archive
-elif
+fi
 
 
 
