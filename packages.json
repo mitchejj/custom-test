@@ -39,7 +39,8 @@
             "all": [
                 "ffmpeg",
                 "ffmpeg-libs",
-                "mesa-va-drivers-freeworld"
+                "mesa-va-drivers-freeworld",
+                "zfs"
             ]
         },
         "exclude": {
