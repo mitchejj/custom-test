@@ -20,8 +20,8 @@ fi
 #     https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-${RELEASE}.noarch.rpm
 cd /etc/yum.repos.d/ && curl -LO https://pkgs.tailscale.com/stable/fedora/tailscale.repo
 cd /etc/yum.repos.d/ && curl -LO https://cli.github.com/packages/rpm/gh-cli.repo 
-
-
+ls /tmp
+ls -lah /tmp/*rpm
 
 
 if [[ "${#INCLUDED_PACKAGES[@]}" -gt 0 && "${#EXCLUDED_PACKAGES[@]}" -eq 0 ]]; then
@@ -42,9 +42,9 @@ else
 fi
 
 
-if [[ "$RELEASE" -eq 37 ]] ; then
-  # wget -P /tmp/rpms \
-  #   https://zfsonlinux.org/fedora/zfs-release-2-2$(rpm --eval "%{dist}").noarch.rpm
-ls -la /tmp/rpms
-  rpm-ostree install /tmp/rpms/*.rpm 
-fi
+# if [[ "$RELEASE" -eq 37 ]] ; then
+#   # wget -P /tmp/rpms \
+#   #   https://zfsonlinux.org/fedora/zfs-release-2-2$(rpm --eval "%{dist}").noarch.rpm
+# ls -la /tmp/rpms
+#   rpm-ostree install /tmp/rpms/*.rpm 
+# fi
