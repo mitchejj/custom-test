@@ -21,7 +21,7 @@ fi
 cd /etc/yum.repos.d/ && curl -LO https://pkgs.tailscale.com/stable/fedora/tailscale.repo
 cd /etc/yum.repos.d/ && curl -LO https://cli.github.com/packages/rpm/gh-cli.repo 
 
-if [[ $FEDORA_MAJOR_VERSION -eq 37 ]] ; then
+if [[ "$RELEASE" -eq 37 ]] ; then
   wget -P /tmp/rpms \
     https://zfsonlinux.org/fedora/zfs-release-2-2$(rpm --eval "%{dist}").noarch.rpm
 
