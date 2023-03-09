@@ -14,7 +14,7 @@
                 "smartmontools",
                 "vim"
             ],
-            "main-base": [
+            "base-main": [
                 "neovim",
                 "git",
                 "tmux",
@@ -26,7 +26,7 @@
                 "tailscale",
                 "gh"
             ],
-            "main-sericea": [
+            "sericea-main": [
                 "tumbler"
             ]
         },
