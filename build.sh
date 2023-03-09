@@ -43,8 +43,8 @@ fi
 
 
 if [[ "$RELEASE" -eq 37 ]] ; then
-  wget -P /tmp/rpms \
-    https://zfsonlinux.org/fedora/zfs-release-2-2$(rpm --eval "%{dist}").noarch.rpm
-
+  # wget -P /tmp/rpms \
+  #   https://zfsonlinux.org/fedora/zfs-release-2-2$(rpm --eval "%{dist}").noarch.rpm
+ls -la /tmp/rpms
   rpm-ostree install /tmp/rpms/*.rpm 
 fi
