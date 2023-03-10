@@ -28,7 +28,7 @@
             ],
             "base-main": [
               "sway",
-              "sway-config-fedora",
+              "sway-systemd",
               "swaybg",
               "swayidle",
               "swaylock",
