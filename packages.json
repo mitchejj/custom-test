@@ -20,8 +20,8 @@
                 "google-android-emoji-fonts",
                 "google-noto-sans-fonts",
                 "google-noto-serif-fonts","
-                "google-roboto*",
-                "mozilla-fira-*",
+                "google-roboto\*",
+                "mozilla-fira-\*",
                 "fira-code-fonts",
                 "ibm-plex-fonts-all",
                 "jetbrains-mono-fonts-all"
