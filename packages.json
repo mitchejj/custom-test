@@ -25,8 +25,7 @@
                 "mozilla-fira-*",
                 "fira-code-fonts",
                 "ibm-plex-fonts-all",
-                "jetbrains-mono-fonts-all",
-
+                "jetbrains-mono-fonts-all"
             ],
             "base-main": [
               "sway",
