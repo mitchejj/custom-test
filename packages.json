@@ -19,7 +19,9 @@
                 "fontawesome5-fonts-all",
                 "google-android-emoji-fonts",
                 "google-noto-sans-fonts",
-                "google-noto-serif-fonts","
+                "google-noto-serif-fonts",
+                "google-roboto*",
+                "mozilla-fira-*",
                 "fira-code-fonts",
                 "ibm-plex-fonts-all",
                 "jetbrains-mono-fonts-all"
