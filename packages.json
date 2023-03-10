@@ -2,36 +2,69 @@
     "all": {
         "include": {
             "all": [
-                "distrobox",
-                "just",
-                "kernel-devel-matched",
-                "libva-intel-driver",
-                "libva-utils",
-                "nvme-cli",
-                "nvtop",
-                "openssl",
-                "pipewire-codec-aptx",
-                "smartmontools",
-                "vim"
-            ],
-            "base-main": [
                 "neovim",
                 "git",
                 "tmux",
                 "fzf",
                 "ncdu",
                 "ldns-utils",
-                "yt-dlp",
-                "npm",
                 "tailscale",
-                "gh"
+                "gh",
+                "power-profiles-daemon",
+                "vifm",
+                "NetworkManager-tui",
+                "nm-connection-editor-desktop",
+                "wavemon",
+                "powerline-fonts",
+                "fontawesome5-fonts-all",
+                "google-android-emoji-fonts",
+                "google-noto-sans-fonts",
+                "google-noto-serif-fonts","
+                "google-roboto*",
+                "mozilla-fira-*",
+                "fira-code-fonts",
+                "ibm-plex-fonts-all",
+                "jetbrains-mono-fonts-all"
+            ],
+            "base-main": [
+              "sway",
+              "sway-config-fedora",
+              "swaybg",
+              "swayidle",
+              "swaylock",
+              "waybar",
+              "dunst",
+              "mako",
+              "foot",
+              "wl-clipboard",
+              "light",
+              "lxqt-policykit",
+              "polkit",
+              "pinentry-gnome3",
+              "gnome-keyring-pam",
+              "pulseaudio-utils",
+              "network-manager-applet",
+              "blueman",
+              "wl-clipboard",
+              "xdg-desktop-portal-gtk",
+              "xdg-desktop-portal-wlr",
+              "xorg-x11-server-Xwayland"
             ],
             "sericea-main": [
-                "tumbler"
             ]
         },
         "exclude": {
-            "all": []
+            "all": [
+                "vim",
+                "open-vm-tools-desktop",
+                "open-vm-tools",
+                "qemu-guest-agent",
+                "spice-vdagent",
+                "spice-webdavd",
+                "virtualbox-guest-additions",
+                "firefox",
+                "firefox-langpacks"
+            ]
         }
     },
     "37": {
