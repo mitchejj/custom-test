@@ -3,6 +3,7 @@
         "include": {
             "all": [
                 "neovim",
+                "openssh",
                 "git",
                 "tmux",
                 "fzf",
@@ -28,7 +29,6 @@
             ],
             "base-main": [
               "sway",
-              "sway-systemd",
               "swaybg",
               "swayidle",
               "swaylock",
