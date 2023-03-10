@@ -25,7 +25,8 @@
                 "mozilla-fira-*",
                 "fira-code-fonts",
                 "ibm-plex-fonts-all",
-                "jetbrains-mono-fonts-all"
+                "jetbrains-mono-fonts-all",
+
             ],
             "base-main": [
               "sway",
@@ -98,7 +99,15 @@
     },
     "38": {
         "include": {
-            "all": []
+            "all": [],
+            "base-main": [
+              "cockpit-system",
+              "cockpit-machines",
+              "cockpit-podman",
+              "cockpit-networkmanager",
+              "cockpit-storaged",
+              "libvirt-daemon-kvm"
+            ]
         },
         "exclude": {
             "all": []
