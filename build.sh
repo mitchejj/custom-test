@@ -26,12 +26,12 @@ ls /tmp
 ls -lah /tmp/*rpm
 
 
-if [[ "$RELEASE" -eq 37 ]] ; then
-  # wget -P /tmp/rpms \
-  #   https://zfsonlinux.org/fedora/zfs-release-2-2$(rpm --eval "%{dist}").noarch.rpm
-  ls -lah /tmp/
+# if [[ "$RELEASE" -eq 37 ]] ; then
+#   # wget -P /tmp/rpms \
+#   #   https://zfsonlinux.org/fedora/zfs-release-2-2$(rpm --eval "%{dist}").noarch.rpm
+#   ls -lah /tmp/
   rpm-ostree install /tmp/*.rpm 
-fi
+# fi
 
 if [[ "${#INCLUDED_PACKAGES[@]}" -gt 0 && "${#EXCLUDED_PACKAGES[@]}" -eq 0 ]]; then
     rpm-ostree install \
