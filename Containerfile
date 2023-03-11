@@ -5,6 +5,7 @@ ARG FEDORA_MAJOR_VERSION="${FEDORA_MAJOR_VERSION:-37}"
 
 
 FROM ${BASE_IMAGE}:${FEDORA_MAJOR_VERSION} AS builder
+ARG ZFS_KMODS="ghcr.io/mitchejj/zfs-kmods:${FEDORA_MAJOR_VERSION}"
 
 ARG IMAGE_NAME="${IMAGE_NAME}"
 ARG FEDORA_MAJOR_VERSION="${FEDORA_MAJOR_VERSION}"
@@ -13,7 +14,7 @@ ADD build.sh /tmp/build.sh
 # ADD post-install.sh /tmp/post-install.sh
 ADD packages.json /tmp/packages.json
 
-COPY --from=ghcr.io/mitchejj/zfs-kmods:${FEDORA_MAJOR_VERSION} /*.rpm /tmp/
+COPY --from=${ZFS_KMODS} /*.rpm /tmp/
 
 RUN /tmp/build.sh
 # RUN /tmp/post-install.sh
