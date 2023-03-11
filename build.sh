@@ -40,7 +40,7 @@ if [[ -d /tmp/"$RELEASE" ]]
 else
   ls -lah /tmp
   echo "no zfs"
-if
+fi
 
 
 if [[ "${#INCLUDED_PACKAGES[@]}" -gt 0 && "${#EXCLUDED_PACKAGES[@]}" -eq 0 ]]; then
