@@ -34,7 +34,7 @@ ls /tmp
 #   rpm-ostree install /tmp/f38/*.rpm 
 # fi
 
-if [[ -d /tmp/"$RELEASE" ]]
+if [[ -d /tmp/"$RELEASE" ]]; then
   ls -lah /tmp/"$RELEASE"
   rmp-ostree install /tmp/"$RELEASE"/*.rpm
 else
