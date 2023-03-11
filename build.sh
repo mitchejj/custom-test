@@ -22,16 +22,26 @@ fi
 # cd /etc/yum.repos.d/ && curl -LO https://copr.fedorainfracloud.org/coprs/atim/bottom/repo/fedora-$(rpm -E %fedora)/atim-bottom-fedora-$(rpm -E %fedora).repo
 cd /etc/yum.repos.d/ && curl -LO https://pkgs.tailscale.com/stable/fedora/tailscale.repo
 cd /etc/yum.repos.d/ && curl -LO https://cli.github.com/packages/rpm/gh-cli.repo 
+
 ls /tmp
-ls -lah /tmp/*rpm
-
-
 # if [[ "$RELEASE" -eq 37 ]] ; then
-#   # wget -P /tmp/rpms \
-#   #   https://zfsonlinux.org/fedora/zfs-release-2-2$(rpm --eval "%{dist}").noarch.rpm
-#   ls -lah /tmp/
-  rpm-ostree install /tmp/*.rpm 
+# #   # wget -P /tmp/rpms \
+# #   #   https://zfsonlinux.org/fedora/zfs-release-2-2$(rpm --eval "%{dist}").noarch.rpm
+#   ls -lah /tmp/f37/
+#   rpm-ostree install /tmp/f37/*.rpm 
+# elif if [[ "$RELEASE" -eq 38 &&  ]] ; then
+#   ls -lah /tmp/f38/
+#   rpm-ostree install /tmp/f38/*.rpm 
 # fi
+
+if [[ -d /tmp/"$RELEASE" ]]
+  ls -lah /tmp/"$RELEASE"
+  rmp-ostree install /tmp/"$RELEASE"/*.rpm
+else
+  ls -lah /tmp
+  echo "no zfs"
+if
+
 
 if [[ "${#INCLUDED_PACKAGES[@]}" -gt 0 && "${#EXCLUDED_PACKAGES[@]}" -eq 0 ]]; then
     rpm-ostree install \
