@@ -6,6 +6,7 @@
                 "git",
                 "tmux",
                 "fzf",
+                "ripgrep",
                 "ncdu",
                 "ldns-utils",
                 "tailscale",
