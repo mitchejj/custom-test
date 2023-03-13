@@ -59,3 +59,6 @@ elif [[ "${#INCLUDED_PACKAGES[@]}" -gt 0 && "${#EXCLUDED_PACKAGES[@]}" -gt 0 ]];
 else
     echo "No packages to install."
 fi
+
+systemctl enable sshd.socket
+systemctl enable tailscaled.service
