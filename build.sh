@@ -36,7 +36,7 @@ ls /tmp
 
 if [[ -d /tmp/f"$RELEASE" ]]; then
   ls -lah /tmp/f"$RELEASE"
-  rmp-ostree install /tmp/f"$RELEASE"/*.rpm
+  rpm-ostree install /tmp/f"$RELEASE"/*.rpm
 else
   ls -lah /tmp
   echo "no zfs"
