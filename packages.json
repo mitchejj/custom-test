@@ -56,7 +56,6 @@
               "xorg-x11-server-Xwayland"
             ],
             "sericea-main": [
-              "pulseaudio-module-bluetooth-freeworld"
             ]
         },
         "exclude": {
