@@ -34,13 +34,13 @@ ls /tmp
 #   rpm-ostree install /tmp/f38/*.rpm 
 # fi
 
-if [[ -d /tmp/f"$RELEASE" ]]; then
-  ls -lah /tmp/f"$RELEASE"
-  rpm-ostree install /tmp/f"$RELEASE"/*.rpm
-else
-  ls -lah /tmp
-  echo "no zfs"
-fi
+# if [[ -d /tmp/f"$RELEASE" ]]; then
+#   ls -lah /tmp/f"$RELEASE"
+#   rpm-ostree install /tmp/f"$RELEASE"/*.rpm
+# else
+#   ls -lah /tmp
+#   echo "no zfs"
+# fi
 
 
 if [[ "${#INCLUDED_PACKAGES[@]}" -gt 0 && "${#EXCLUDED_PACKAGES[@]}" -eq 0 ]]; then
