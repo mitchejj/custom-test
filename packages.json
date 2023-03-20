@@ -99,6 +99,7 @@
               "cockpit-podman",
               "cockpit-networkmanager",
               "cockpit-storaged",
+              "cockpit-ostree",
               "libvirt-daemon-kvm"
             ]
         },
