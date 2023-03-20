@@ -25,7 +25,13 @@
                 "mozilla-fira-*",
                 "fira-code-fonts",
                 "ibm-plex-fonts-all",
-                "jetbrains-mono-fonts-all"
+                "jetbrains-mono-fonts-all",
+                "podman-tui",
+                "cockpit-networkmanager",
+                "cockpit-podman",
+                "cockpit-selinux",
+                "cockpit-storaged",
+                "cockpit-system"
             ],
             "base-main": [
               "sway",
