@@ -24,15 +24,15 @@ cd /etc/yum.repos.d/ && curl -LO https://pkgs.tailscale.com/stable/fedora/tailsc
 cd /etc/yum.repos.d/ && curl -LO https://cli.github.com/packages/rpm/gh-cli.repo 
 
 ls /tmp
-# if [[ "$RELEASE" -eq 37 ]] ; then
-# #   # wget -P /tmp/rpms \
-# #   #   https://zfsonlinux.org/fedora/zfs-release-2-2$(rpm --eval "%{dist}").noarch.rpm
-#   ls -lah /tmp/f37/
-#   rpm-ostree install /tmp/f37/*.rpm 
-# elif if [[ "$RELEASE" -eq 38 &&  ]] ; then
-#   ls -lah /tmp/f38/
-#   rpm-ostree install /tmp/f38/*.rpm 
-# fi
+if [[ "$RELEASE" -eq 37 ]] ; then
+#   # wget -P /tmp/rpms \
+#   #   https://zfsonlinux.org/fedora/zfs-release-2-2$(rpm --eval "%{dist}").noarch.rpm
+  ls -lah /tmp/f37/
+  rpm-ostree install /tmp/f37/*.rpm 
+elif if [[ "$RELEASE" -eq 38 &&  ]] ; then
+  ls -lah /tmp/f38/
+  rpm-ostree install /tmp/f38/*.rpm 
+fi
 
 # if [[ -d /tmp/f"$RELEASE" ]]; then
 #   ls -lah /tmp/f"$RELEASE"
