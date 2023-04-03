@@ -54,7 +54,7 @@
               "wl-clipboard",
               "xdg-desktop-portal-gtk",
               "xdg-desktop-portal-wlr",
-              "xorg-x11-server-Xwayland",
+              "xorg-x11-server-Xwayland"
             ],
             "sericea-main": [
             ]
