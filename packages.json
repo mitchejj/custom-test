@@ -79,12 +79,6 @@
             "all": [
                 "vim",
                 "fedora-flathub-remote",
-                "xfce4-panel",
-                "vpnc",
-                "ppp",
-                "pptp",
-                "openvpn",
-                "openconnect",
                 "open-vm-tools-desktop",
                 "open-vm-tools",
                 "qemu-guest-agent",
@@ -114,14 +108,7 @@
     },
     "38": {
         "include": {
-            "all": [],
-            "base-main": [
-              "fedora-release-sericea",
-              "fedora-release-ostree-desktop",
-              "sway-config-fedora",
-              "sddm",
-              "sddm-wayland-generic",
-              "sddm-themes",
+            "all": [
               "cockpit-system",
               "cockpit-podman",
               "cockpit-networkmanager",
@@ -130,6 +117,14 @@
               "cockpit-selinux",
               "cockpit-system",
               "cockpit-pcp"
+            ],
+            "base-main": [
+              "fedora-release-sericea",
+              "fedora-release-ostree-desktop",
+              "sway-config-fedora",
+              "sddm",
+              "sddm-wayland-generic",
+              "sddm-themes"
             ]
         },
         "exclude": {
