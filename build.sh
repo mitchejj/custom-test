@@ -23,6 +23,24 @@ fi
 cd /etc/yum.repos.d/ && curl -LO https://pkgs.tailscale.com/stable/fedora/tailscale.repo
 cd /etc/yum.repos.d/ && curl -LO https://cli.github.com/packages/rpm/gh-cli.repo 
 
+if [[ "${#INCLUDED_PACKAGES[@]}" -gt 0 && "${#EXCLUDED_PACKAGES[@]}" -eq 0 ]]; then
+    rpm-ostree install \
+        ${INCLUDED_PACKAGES[@]}
+
+elif [[ "${#INCLUDED_PACKAGES[@]}" -eq 0 && "${#EXCLUDED_PACKAGES[@]}" -gt 0 ]]; then
+    rpm-ostree override remove \
+        ${EXCLUDED_PACKAGES[@]}
+
+elif [[ "${#INCLUDED_PACKAGES[@]}" -gt 0 && "${#EXCLUDED_PACKAGES[@]}" -gt 0 ]]; then
+    rpm-ostree override remove \
+        ${EXCLUDED_PACKAGES[@]} \
+        $(printf -- "--install=%s " ${INCLUDED_PACKAGES[@]})
+
+else
+    echo "No packages to install."
+fi
+
+###
 ls /tmp
 # if [[ "$RELEASE" -eq 37 ]] ; then
 # #   # wget -P /tmp/rpms \
@@ -42,22 +60,12 @@ else
   echo "no zfs"
 fi
 
-
-if [[ "${#INCLUDED_PACKAGES[@]}" -gt 0 && "${#EXCLUDED_PACKAGES[@]}" -eq 0 ]]; then
-    rpm-ostree install \
-        ${INCLUDED_PACKAGES[@]}
-
-elif [[ "${#INCLUDED_PACKAGES[@]}" -eq 0 && "${#EXCLUDED_PACKAGES[@]}" -gt 0 ]]; then
-    rpm-ostree override remove \
-        ${EXCLUDED_PACKAGES[@]}
-
-elif [[ "${#INCLUDED_PACKAGES[@]}" -gt 0 && "${#EXCLUDED_PACKAGES[@]}" -gt 0 ]]; then
-    rpm-ostree override remove \
-        ${EXCLUDED_PACKAGES[@]} \
-        $(printf -- "--install=%s " ${INCLUDED_PACKAGES[@]})
-
+if [[ "$IMAGE_NAME" -eg 'base-main-custom' ]] ; then
+  echo 'we have base'
+elif [[ "$IMAGE_NAME" -eg 'sericea-main-custom' ]] ; then
+  echo 'we have sericea'
 else
-    echo "No packages to install."
+  echo $IMAGE_NAME
 fi
 
 systemctl enable sshd.socket
