@@ -26,14 +26,7 @@
                 "fira-code-fonts",
                 "ibm-plex-fonts-all",
                 "jetbrains-mono-fonts-all",
-                "podman-tui",
-                "cockpit-networkmanager",
-                "cockpit-podman",
-                "cockpit-selinux",
-                "cockpit-storaged",
-                "cockpit-system",
-                "cockpit-ostree",
-                "cockpit-pcp"
+                "podman-tui"
             ],
             "base-main": [
               "sway",
@@ -62,7 +55,6 @@
               "xdg-desktop-portal-gtk",
               "xdg-desktop-portal-wlr",
               "xorg-x11-server-Xwayland",
-              "pulseaudio-module-bluetooth-freeworld"
             ],
             "sericea-main": [
             ]
@@ -86,22 +78,36 @@
     "37": {
         "include": {
             "all": [
+              "pulseaudio-module-bluetooth-freeworld"
             ]
         },
         "exclude": {
-            "all": []
+            "all": [
+              "pipewire-pulseaudio"
+            ]
+
         }
     },
     "38": {
         "include": {
             "all": [],
             "base-main": [
+              "fedora-release-sericea",
+              "fedora-release-ostree-desktop",
+              "fedora-release-identity-sericea",
+              "sway-config-fedora",
+              "sddm",
+              "sddm-wayland-generic",
+              "sddm-themes",
               "cockpit-system",
               "cockpit-machines",
               "cockpit-podman",
               "cockpit-networkmanager",
               "cockpit-storaged",
               "cockpit-ostree",
+              "cockpit-selinux",
+              "cockpit-system",
+              "cockpit-pcp",
               "libvirt-daemon-kvm"
             ]
         },
