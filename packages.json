@@ -45,6 +45,12 @@
               "mako",
               "foot",
               "imv",
+              "Thunar",
+              "thunar-archive-plugin",
+              "gvfs",
+              "gvfs-client",
+              "pkcs11-helper",
+
               "tumbler",
               "rofi-wayland",
               "rofi-themes",
