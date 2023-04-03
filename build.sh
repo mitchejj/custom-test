@@ -62,10 +62,10 @@ fi
 
 systemctl enable sshd.socket
 systemctl enable tailscaled.service
-systemctl disable bolt.service
-systemctl disable mdmonitor.service
-systemctl disable fprintd.service
-systemctl disable iscsid.socket
-systemctl disable raid-check.timer
-systemctl disable iscsi-starter
-systemctl disable iscsi-onboot.service
+# systemctl disable bolt.service
+# systemctl disable mdmonitor.service
+# systemctl disable fprintd.service
+# systemctl disable iscsid.socket
+# systemctl disable raid-check.timer
+# systemctl disable iscsi-starter
+# systemctl disable iscsi-onboot.service

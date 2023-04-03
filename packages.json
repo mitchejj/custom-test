@@ -78,7 +78,9 @@
     "37": {
         "include": {
             "all": [
-              "pulseaudio-module-bluetooth-freeworld"
+              "pulseaudio-module-bluetooth-freeworld",
+              "libvirt-daemon-kvm",
+              "cockpit-machines"
             ]
         },
         "exclude": {
@@ -94,13 +96,11 @@
             "base-main": [
               "fedora-release-sericea",
               "fedora-release-ostree-desktop",
-              "fedora-release-identity-sericea",
               "sway-config-fedora",
               "sddm",
               "sddm-wayland-generic",
               "sddm-themes",
               "cockpit-system",
-              "cockpit-machines",
               "cockpit-podman",
               "cockpit-networkmanager",
               "cockpit-storaged",
@@ -108,7 +108,6 @@
               "cockpit-selinux",
               "cockpit-system",
               "cockpit-pcp",
-              "libvirt-daemon-kvm"
             ]
         },
         "exclude": {
