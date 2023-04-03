@@ -61,9 +61,9 @@ else
   echo "no zfs"
 fi
 
-if [[ "$IMAGE_NAME" == 'base-main-custom' ]] ; then
+if [[ "$IMAGE_NAME" == 'base-main' ]] ; then
   echo 'we have base'
-elif [[ "$IMAGE_NAME" == 'sericea-main-custom' ]] ; then
+elif [[ "$IMAGE_NAME" == 'sericea-main' ]] ; then
   echo 'we have sericea'
 else
   echo $IMAGE_NAME
