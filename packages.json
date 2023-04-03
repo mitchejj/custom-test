@@ -29,6 +29,12 @@
                 "podman-tui"
             ],
             "base-main": [
+              "dbus",
+              "NetworkManager",
+              "nss-tools",
+              "unbound",
+              "lm_sensors",
+              "systat",
               "sway",
               "wlroots",
               "swaybg",
