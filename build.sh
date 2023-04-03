@@ -27,6 +27,7 @@ if [[ "${#INCLUDED_PACKAGES[@]}" -gt 0 && "${#EXCLUDED_PACKAGES[@]}" -eq 0 ]]; t
     rpm-ostree install \
         ${INCLUDED_PACKAGES[@]}
 
+
 elif [[ "${#INCLUDED_PACKAGES[@]}" -eq 0 && "${#EXCLUDED_PACKAGES[@]}" -gt 0 ]]; then
     rpm-ostree override remove \
         ${EXCLUDED_PACKAGES[@]}
@@ -60,12 +61,13 @@ else
   echo "no zfs"
 fi
 
-if [[ "$IMAGE_NAME" -eg 'base-main-custom' ]] ; then
+if [[ "$IMAGE_NAME" == 'base-main-custom' ]] ; then
   echo 'we have base'
-elif [[ "$IMAGE_NAME" -eg 'sericea-main-custom' ]] ; then
+elif [[ "$IMAGE_NAME" == 'sericea-main-custom' ]] ; then
   echo 'we have sericea'
 else
   echo $IMAGE_NAME
+
 fi
 
 systemctl enable sshd.socket
