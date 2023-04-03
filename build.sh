@@ -62,8 +62,8 @@ else
 fi
 
 if [[ "$IMAGE_NAME" == 'base-main' ]] ; then
-  echo 'we have base'\
-    systemctl enable sddm.service
+  echo 'we have base'
+
 elif [[ "$IMAGE_NAME" == 'sericea-main' ]] ; then
   echo 'we have sericea'
 else
