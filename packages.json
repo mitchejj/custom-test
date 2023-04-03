@@ -107,7 +107,7 @@
               "cockpit-ostree",
               "cockpit-selinux",
               "cockpit-system",
-              "cockpit-pcp",
+              "cockpit-pcp"
             ]
         },
         "exclude": {
