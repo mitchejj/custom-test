@@ -53,20 +53,19 @@ ls /tmp
 #   rpm-ostree install /tmp/f38/*.rpm 
 # fi
 
-if [[ -d /tmp/f"$RELEASE" ]]; then
-  ls -lah /tmp/f"$RELEASE"
-#  rpm-ostree install /tmp/f"$RELEASE"/*.rpm
-else
-  ls -lah /tmp
-  echo "no zfs"
-fi
 
 if [[ "$IMAGE_NAME" == 'base-main' ]] ; then
-  echo 'we have base'
-
+  if [[ -d /tmp/f"$RELEASE" ]]; then
+    ls -lah /tmp/f"$RELEASE"
+    rpm-ostree install /tmp/f"$RELEASE"/*.rpm
+  else
+    ls -lah /tmp
+    echo "no zfs"
+  fi
 elif [[ "$IMAGE_NAME" == 'sericea-main' ]] ; then
-  echo 'we have sericea'
+  echo 'we have sericea, no zfs needed'
 else
+  echo 'We have?....'
   echo $IMAGE_NAME
 
 fi
