@@ -125,7 +125,8 @@
             "base-main": [
               "fedora-release-sericea",
               "fedora-release-ostree-desktop",
-              "sway-config-fedora"
+              "sway-config-fedora",
+              "hyprland"
             ]
         },
         "exclude": {
