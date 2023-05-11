@@ -127,6 +127,12 @@
               "fedora-release-ostree-desktop",
               "sway-config-fedora",
               "hyprland"
+            ],
+            "silverblue-base": [
+              "fedora-release-sericea",
+              "fedora-release-ostree-desktop",
+              "sway-config-fedora",
+              "hyprland"
             ]
         },
         "exclude": {
