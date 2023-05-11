@@ -31,20 +31,20 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        image_name: [sericea-main, base-main]
-        major_version: [37, 38]
+        image_name: [sericea-main, base-main, silverblue-main]
+        major_version: [38]
         include:
-          - major_version: 37
-            is_latest_version: true
-            is_stable_version: true
           - major_version: 38
             is_latest_version: true
-            is_stable_version: false
-        exclude:
-          # There is no Fedora 37 version of sericea
-          # When F38 is added, sericea will automatically be built too
-          - image_name: sericea-main
-            major_version: 37
+            is_stable_version: true
+          # - major_version: 38
+          #   is_latest_version: true
+          #   is_stable_version: false
+        # exclude:
+          # # There is no Fedora 37 version of sericea
+          # # When F38 is added, sericea will automatically be built too
+          # - image_name: sericea-main
+          #   major_version: 37
     steps: 
       # Checkout push-to-registry action GitHub repository
       - name: Checkout Push to Registry action
