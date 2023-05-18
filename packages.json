@@ -71,7 +71,14 @@
               "wl-clipboard",
               "xdg-desktop-portal-gtk",
               "xdg-desktop-portal-wlr",
-              "xorg-x11-server-Xwayland"
+              "xorg-x11-server-Xwayland",
+              "virt-install",
+              "libvirt-daemon-config-network",
+              "libvirt-daemon-kvm",
+              "qemu-kvm",
+              "virt-manager",
+              "virt-viewer",
+              "virt-top"
             ],
             "sericea-main": [
             ]
