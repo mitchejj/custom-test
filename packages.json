@@ -95,7 +95,8 @@
                 "spice-webdavd",
                 "virtualbox-guest-additions",
                 "firefox",
-                "firefox-langpacks"
+                "firefox-langpacks",
+                "zfs-fuse"
             ]
         }
     },
