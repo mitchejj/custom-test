@@ -31,7 +31,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        image_name: [sericea-main, base-main, silverblue-main]
+        image_name: [sericea-main, base-main]
         major_version: [38]
         include:
           - major_version: 38
