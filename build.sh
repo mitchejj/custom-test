@@ -76,7 +76,7 @@ fi
 
 systemctl enable sshd.socket
 systemctl enable tailscaled.service
-timedatectl set-ntp true
+# timedatectl set-ntp true
 # systemctl disable bolt.service
 # systemctl disable mdmonitor.service
 # systemctl disable fprintd.service
