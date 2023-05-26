@@ -98,8 +98,10 @@
             "all": [
               "pulseaudio-module-bluetooth-freeworld",
               "libvirt-daemon-kvm",
-              "cockpit-machines"
-
+              "cockpit-machines",
+              "sddm",
+              "sddm-wayland-generic",
+              "sddm-themes"
             ]
         },
         "exclude": {
@@ -126,9 +128,7 @@
               "fedora-release-ostree-desktop",
               "sway-config-fedora",
               "hyprland",
-              "sddm",
-              "sddm-wayland-generic",
-              "sddm-themes"
+              "eww"
             ],
             "silverblue-base": [
               "fedora-release-sericea",
