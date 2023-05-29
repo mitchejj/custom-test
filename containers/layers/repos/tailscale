@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -ouex pipefail
+
+cd /etc/yum.repos.d/ && curl -LO https://pkgs.tailscale.com/stable/fedora/tailscale.repo
+
+rpm-ostree install -y tailscale
+
+systemctl enable tailscaled.service
+
+ostree container commit -S "tailscale"
+

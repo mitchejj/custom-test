@@ -1,0 +1,9 @@
+cockpit-system
+cockpit-podman
+cockpit-networkmanager
+cockpit-storaged
+cockpit-ostree
+cockpit-selinux
+cockpit-system
+cockpit-pcp
+

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -ouex pipefail
+
+cd /etc/yum.repos.d/ && curl -LO https://cli.github.com/packages/rpm/gh-cli.repo 
+
+rpm-ostree install -y gh
+
+
+ostree container commit -S "github cli"
+
