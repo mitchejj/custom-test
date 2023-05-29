@@ -15,6 +15,7 @@ on:
       - '**.md'
       - '**.txt'
       - '**/containers/'
+      - '.github/workflows/sway-build.yml'
   workflow_dispatch:
 
 env:
