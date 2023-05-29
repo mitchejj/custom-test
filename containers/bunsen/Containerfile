@@ -1,6 +1,6 @@
 FROM ghcr.io/ublue-os/sericea-main:38
 
-COPY ./containers/layers/override .
+COPY ./containers/layers/ .
 
 
 RUN rm /etc/yum.repos.d/google-chrome.repo && \
