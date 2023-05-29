@@ -1,5 +1,3 @@
-https://github.com/pkulak/filverblue/blob/main/Containerfile
-
 FROM ghcr.io/ublue-os/sericea-main:38
 
 RUN rm /etc/yum.repos.d/google-chrome.repo && \
