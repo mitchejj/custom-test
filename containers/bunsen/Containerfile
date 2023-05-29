@@ -2,7 +2,6 @@ FROM ghcr.io/ublue-os/sericea-main:38
 
 RUN rm /etc/yum.repos.d/google-chrome.repo && \
     rm /etc/yum.repos.d/rpmfusion-nonfree-steam.repo && \
-    rm /etc/yum.repos.d/rpmfusion-nonfree-steam.repo && \
     rm /etc/yum.repos.d/rpmfusion-nonfree-nvidia-driver.repo && \
 
 COPY ./containers/layers/override/
