@@ -53,7 +53,7 @@ jobs:
           labels: |
             org.opencontainers.image.title=${{ env.IMAGE_NAME }}
             org.opencontainers.image.description=TBA
-          io.artifacthub.package.readme-url=http://github.com/mitchejj/
+            io.artifacthub.package.readme-url=http://github.com/mitchejj/
 
       # Build image using Buildah action
       - name: Build Image
