@@ -14,7 +14,7 @@ on:
     paths-ignore:
       - '**.md'
       - '**.txt'
-      - '**/containers/'
+      - 'containers/**'
       - '.github/workflows/sway-build.yml'
   workflow_dispatch:
 
