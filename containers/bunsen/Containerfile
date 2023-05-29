@@ -1,15 +1,10 @@
 FROM ghcr.io/ublue-os/sericea-main:38
 
-COPY ./containers/layers/override .
-
-
 RUN rm /etc/yum.repos.d/google-chrome.repo && \
     rm /etc/yum.repos.d/rpmfusion-nonfree-steam.repo && \
     rm /etc/yum.repos.d/rpmfusion-nonfree-nvidia-driver.repo && \
 
-
-RUN cat overide/** | xargs rpm-ostree override remove && \
+COPY ./containers/layers/override .
+RUN cat override/** | xargs rpm-ostree override remove && \
     ostree container commit && \
     rm override
-
-    
