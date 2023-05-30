@@ -2,8 +2,7 @@ FROM ghcr.io/ublue-os/sericea-main:38 as bunsen
 
 ARG IMAGE_NAME=bunsen
 
-COPY ./layers /tmp
-COPY ./bunsen/layers /tmp
+COPY ./containers/layers /tmp
 RUN ls /tmp/
 RUN ls /tmp/override
 
@@ -16,7 +15,7 @@ RUN rm /etc/yum.repos.d/google-chrome.repo && \
 
 RUN /tmp/build.sh
 
-FROM bunsen AS bunsen-zed
+FROM bunsen:38 AS bunsen-zed
 
 COPY --from=ghcr.io/mitchejj/zfs-kmods:38 *.rpm /tmp/zfs/
 
