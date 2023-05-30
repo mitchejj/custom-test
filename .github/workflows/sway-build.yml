@@ -35,13 +35,13 @@ jobs:
       id-token: write
     strategy:
       fail-fast: false
-    matrix:
-      base_name: [bunsen, bunsen-zed]
-      major_version: [38]
-      include:
-        - major_version: 38
-          is_latest_version: true
-          is_stable_version: true 
+      matrix:
+        base_name: [bunsen, bunsen-zed]
+        major_version: [38]
+        include:
+          - major_version: 38
+            is_latest_version: true
+            is_stable_version: true 
     steps: 
       # Checkout push-to-registry action GitHub repository
       - name: Checkout Push to Registry action
