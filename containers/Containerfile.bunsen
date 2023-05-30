@@ -1,0 +1,39 @@
+FROM ghcr.io/ublue-os/sericea-main:38 as bunsen
+
+ARG IMAGE_NAME=bunsen
+
+COPY ./layers /tmp
+COPY ./bunsen/layers /tmp
+RUN ls /tmp/
+RUN ls /tmp/override
+
+# I know I will not use these repos, this should improve build times a little
+RUN rm /etc/yum.repos.d/google-chrome.repo && \
+    rm /etc/yum.repos.d/fedora-cisco-openh264.repo && \
+    rm /etc/yum.repos.d/rpmfusion-nonfree-steam.repo && \
+    rm /etc/yum.repos.d/rpmfusion-nonfree-nvidia-driver.repo
+
+
+RUN /tmp/build.sh
+
+FROM bunsen AS bunsen-zed
+
+COPY --from=ghcr.io/mitchejj/zfs-kmods:38 *.rpm /tmp/zfs/
+
+RUN rpm-ostree install /tmp/zfs/*.rpm
+
+
+# RUN cat /tmp/override/** | xargs rpm-ostree override remove && \
+#     ostree container commit && \
+#     rm override
+
+
+# RUN cat /tmp/install/** | xargs rpm-ostree install && \
+#     rm -r /tmp/install && \
+#     ostree container commit
+
+# RUN REPOS=($(ls /tmp/repos/)) && \
+#   echo ${REPOS[@]} && \
+#   for s in "${$REPOS[@]}" ; do \ 
+#   echo s \
+# done 

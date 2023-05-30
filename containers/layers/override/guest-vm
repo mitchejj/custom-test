@@ -1,7 +1,7 @@
 open-vm-tools-desktop
 open-vm-tools
 qemu-guest-agent
-qemu-user-stati
+qemu-user-static
 spice-vdagent
 spice-webdavd
 virtualbox-guest-additions
