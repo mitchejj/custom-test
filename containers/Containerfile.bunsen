@@ -15,7 +15,7 @@ RUN rm /etc/yum.repos.d/google-chrome.repo && \
 
 RUN /tmp/build.sh
 
-FROM ghcr.io/mitchejj/bunsen:38 AS bunsen-zed
+FROM bunsen AS bunsen-zed
 
 ARG IMAGE_NAME="${IMAGE_NAME}"
 
