@@ -1,6 +1,6 @@
 FROM ghcr.io/ublue-os/sericea-main:38 as bunsen
 
-ARG IMAGE_NAME=bunsen
+ARG IMAGE_NAME="${IMAGE_NAME}"
 
 COPY ./containers/layers /tmp
 RUN ls /tmp/
@@ -15,7 +15,9 @@ RUN rm /etc/yum.repos.d/google-chrome.repo && \
 
 RUN /tmp/build.sh
 
-FROM bunsen:38 AS bunsen-zed
+FROM ghcr.io/mitchejj/bunsen:38 AS bunsen-zed
+
+ARG IMAGE_NAME="${IMAGE_NAME}"
 
 COPY --from=ghcr.io/mitchejj/zfs-kmods:38 *.rpm /tmp/zfs/
 
