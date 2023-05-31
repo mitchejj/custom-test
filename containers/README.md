@@ -1,6 +1,7 @@
 # Main
+[![bunsen-builder](https://github.com/mitchejj/custom-test/actions/workflows/sway-build.yml/badge.svg)](https://github.com/mitchejj/custom-test/actions/workflows/sway-build.yml)
 
-YA custom Fedora operating system using [OCI/Docker containers as a transport and delivery mechanism](https://fedoraproject.org/wiki/Changes/OstreeNativeContainerStabley). Images are rebuit nightly at UTC: 20:23 (https://time.is/UTC)
+YA custom Fedora operating system using [OCI/Docker containers as a transport and delivery mechanism](https://fedoraproject.org/wiki/Changes/OstreeNativeContainerStabley). Images are rebuit nightly at UTC: 23:45 (https://time.is/UTC)
 
 ## What is this?
 

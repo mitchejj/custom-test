@@ -9,8 +9,8 @@ on:
   #     - 'Containerfile'
   #     - 'packages.json'
   #     - 'build.sh'
-  # schedule:
-  #   - cron: '20 23 * * *'  # 11:20pm UTC everyday
+  schedule:
+    - cron: '45 23 * * *'  # 11:45pm UTC everyday
   # push:
   #   branches:
   #     - main
