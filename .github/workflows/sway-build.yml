@@ -1,4 +1,4 @@
-name: Build & Push Sway Image
+name: bunsen-builder
 on:
   # pull_request:
   #   branches:
