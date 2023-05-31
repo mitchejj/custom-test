@@ -1,13 +1,13 @@
 # Main
 [![bunsen-builder](https://github.com/mitchejj/custom-test/actions/workflows/sway-build.yml/badge.svg)](https://github.com/mitchejj/custom-test/actions/workflows/sway-build.yml)
 
-YA custom Fedora operating system using [OCI/Docker containers as a transport and delivery mechanism](https://fedoraproject.org/wiki/Changes/OstreeNativeContainerStabley). Images are rebuit nightly at UTC: 23:45 (https://time.is/UTC)
+YA custom Fedora operating system using [OCI/Docker containers as a transport and delivery mechanism](https://fedoraproject.org/wiki/Changes/OstreeNativeContainerStabley). Images are rebuit nightly at 23:45 UTC, here is a [UTC Clock](https://time.is/UTC).
 
 ## What is this?
 
 My first Linux system that I enjoyed using was CrunchBang Linux, this is what eventually made me switch to linux full time. One of the 'fun' aspects of the distro was using Muppet characters as release names. Using [uBlue](http://github.com/uble-os/main) [sericea][ublue-sericea] Bunsen is my layering of features. Eventually I plan on also using [base][ublue-base]) to build a [Hyprland](https://hyprland.org/) version, Beaker, that I can play around with.
 
-Both have a \*-zed option for built in zfs. Due to ongoing issues with intergration between the Linux kernel and zfs sometimes the zfs version may not always be up-to-date.
+Both have a \*-zed option for built in zfs. 
 
 [ublue-sericea]: https://github.com/ublue-os/main/pkgs/container/base-sericea
 [ublue-base]: https://github.com/ublue-os/main/pkgs/container/base-main
@@ -34,7 +34,6 @@ To rebase an existing Silverblue/Kinoite machine to the latest release (37):
 
     
 #### Bunsen (Sway derived from Sericea)  
-Fedora 38-only, recommended only for advanced users
 
     sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/mitchejj/bunsen:38
 
@@ -47,6 +46,13 @@ or
 
 
     sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/mitchejj/beaker:38
+
+#### ZFS Support
+Due to ongoing issues with intergration between the Linux kernel and zfs sometimes the zfs version may not always be up-to-date.
+
+The default mountpoint for a newly created zpool `tank` is `/tank` since the
+root filesystem is immutable the directory cannot be created. A new mount point
+needs to be selected. I would suggest `/var/`
 
 ## Verification
 
