@@ -1,46 +1,51 @@
 # Main
 
-[![build-ublue](https://github.com/ublue-os/main/actions/workflows/build.yml/badge.svg)](https://github.com/ublue-os/main/actions/workflows/build.yml)
-YA-spin on the Fedora immutable images; built upon uBlue.
+YA custom Fedora operating system using [OCI/Docker containers as a transport and delivery mechanism](https://fedoraproject.org/wiki/Changes/OstreeNativeContainerStabley). Images are rebuit nightly at UTC: 20:23 (https://time.is/UTC)
 
 ## What is this?
 
+My first Linux system that I enjoyed using was CrunchBang Linux, this is what eventually made me switch to linux full time. One of the 'fun' aspects of the distro was using Muppet characters as release names. Using [uBlue](http://github.com/uble-os/main) [sericea][ublue-sericea] Bunsen is my layering of features. Eventually I plan on also using [base][ublue-base]) to build a [Hyprland](https://hyprland.org/) version, Beaker, that I can play around with.
+
+Both have a \*-zed option for built in zfs. Due to ongoing issues with intergration between the Linux kernel and zfs sometimes the zfs version may not always be up-to-date.
+
+[ublue-sericea]: https://github.com/ublue-os/main/pkgs/container/base-sericea
+[ublue-base]: https://github.com/ublue-os/main/pkgs/container/base-main
+
+
 ## Features
 
-- Start with a Fedora image (Sericea or Base)
-- uBlue adds some extra's: 
-  - Hardware acceleration and codecs
-  - `distrobox` for terminal CLI
-  - A selection of [udev rules and service units](https://github.com/ublue-os/config)
-  - Various other tools: check out the [complete list of packages](packages.json)
-  - Sets automatic staging of updates for the system
-  - Sets flatpaks to update twice a day
 - Finish with my quarks
+  - Remove guest VM support
   - Tailscale
-  - Tools
-  - Fonts
-  - Removes VM guest tooling
+  - NeoVim
+  - git
+  - tmux
+  - vifm
+  - Fonts (powerline-fonts, mozilla-fira, fira-code, google-noto, ibm-plex, jetbrains-mono)
 
 ## How to use these:
 
-Note: If you have an Nvidia GPU use [the ublue-os/nvidia images instead](https://github.com/ublue-os/nvidia)
 
 To rebase an existing Silverblue/Kinoite machine to the latest release (37): 
 1. Download and install [Fedora Silverblue](https://silverblue.fedoraproject.org/download)
-1. After you reboot you should [pin the working deployment](https://docs.fedoraproject.org/en-US/fedora-silverblue/faq/#_about_using_silverblue) so you can safely rollback 
+1. After you reboot you should [pin the working deployment](https://docs.fedoraproject.org/en-US/fedora-silverblue/faq/#_about_using_silverblue) so you can safely rollback.
 1. Open a terminal and use one of the following commands to rebase the OS:
 
     
-#### Bunsen (Sway derived from Sericea) 
+#### Bunsen (Sway derived from Sericea)  
 Fedora 38-only, recommended only for advanced users
 
-    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/ublue-os/sericea-main:38
+    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/mitchejj/bunsen:38
+
+or
+    
+    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/mitchejj/bunsen-zed:38
 
 
 #### Beaker (Hyprland derived from Base)
 
-    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/ublue-os/base-main:37
 
+    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/mitchejj/beaker:38
 
 ## Verification
 
