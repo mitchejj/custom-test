@@ -1,4 +1,4 @@
-#Container will copy:
+# Containerfile will copy:
 #   override: files of packages to remove
 #   install:  files of packages to install
 #   repo:     scripts to add repo's and install related packages
@@ -29,4 +29,13 @@ echo ${REPOS[@]}
 for s in "${REPOS[@]}" ; do
   /tmp/repos/$s
 done 
+
+sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/fedora-cisco-openh264.repo
+sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-free.repo
+sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-free-updates.repo
+sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree.repo
+sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-updates.repo
+
+rm -rf /tmp/*
+rm -rf /var/*
 
