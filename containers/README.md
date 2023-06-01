@@ -47,7 +47,9 @@ or
 
     sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/mitchejj/beaker:38
 
-#### ZFS Support [![build-zfs-kmods](https://github.com/mitchejj/ostree-zfs-kmod/actions/workflows/build.yml/badge.svg)](https://github.com/mitchejj/ostree-zfs-kmod/actions/workflows/build.yml)
+#### ZFS Support
+[![build-zfs-kmods](https://github.com/mitchejj/ostree-zfs-kmod/actions/workflows/build.yml/badge.svg)](https://github.com/mitchejj/ostree-zfs-kmod/actions/workflows/build.yml)
+
 Due to ongoing issues with intergration between the Linux kernel and zfs sometimes the zfs version may not always be up-to-date.
 
 The default mountpoint for a newly created zpool `tank` is `/tank` since the
