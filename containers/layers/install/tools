@@ -1,4 +1,3 @@
-fzf
 git
 ldns-utils
 ncdu
@@ -8,6 +7,5 @@ nm-connection-editor-desktop
 podman-tui
 power-profiles-daemon
 ripgrep
-tmux
 vifm
 wavemon
