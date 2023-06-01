@@ -1,6 +1,8 @@
 broadcom-wl
 kmod-v4l2loopback
 kmod-wl
+kmod-xone
+kmod-xpadneo
 v4l2loopback
 vim
 vim-common
@@ -8,6 +10,4 @@ vim-data
 vim-enhanced
 vim-filesystem
 vim-minimal
-xone
-xpadneo
 xxd

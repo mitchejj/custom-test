@@ -1,5 +1,5 @@
-open-vm-tools-desktop
 open-vm-tools
+open-vm-tools-desktop
 qemu-guest-agent
 qemu-user-static
 spice-vdagent
