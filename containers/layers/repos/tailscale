@@ -6,4 +6,6 @@ cd /etc/yum.repos.d/ && curl -LO https://pkgs.tailscale.com/stable/fedora/tailsc
 
 rpm-ostree install -y tailscale
 
+sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/tailscale.repo
+
 systemctl enable tailscaled.service
