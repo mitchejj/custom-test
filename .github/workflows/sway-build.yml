@@ -6,20 +6,20 @@ on:
   #   paths-ignore:
   #     - '**.md'
   #     - '**.txt'
-  #     - 'Containerfile'
-  #     - 'packages.json'
+  #     - 'Containerfile.beaker'
+  #     - 'beaker/**'
   #     - 'build.sh'
   schedule:
-    - cron: '45 23 * * *'  # 11:45pm UTC everyday
-  # push:
-  #   branches:
-  #     - main
-  #   paths-ignore:
-  #     - '**.md'
-  #     - '**.txt'
-  #     - 'Containerfile'
-  #     - 'packages.json'
-  #     - 'build.sh'
+    - cron: '45 9 * * *'  # 9:45am UTC everyday
+  push:
+    branches:
+      - atomic
+    paths-ignore:
+      - '**.md'
+      - '**.txt'
+      - 'Containerfile.beaker'
+      - 'beaker/**'
+      - 'build.sh'
   workflow_dispatch:
 
 env:
@@ -110,7 +110,7 @@ jobs:
         uses: redhat-actions/buildah-build@v2
         with:
           containerfiles: |
-            ./containers/Containerfile.bunsen
+            ./Containerfile.bunsen
           image: ${{ env.IMAGE_NAME }}
           tags: |
             ${{ steps.generate-tags.outputs.alias_tags }}

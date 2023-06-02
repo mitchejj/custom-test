@@ -2,7 +2,7 @@ FROM ghcr.io/ublue-os/sericea-main:38 as bunsen
 
 ARG IMAGE_NAME="${IMAGE_NAME}"
 
-COPY ./containers/layers /tmp
+COPY ./layers /tmp
 
 RUN rm /etc/yum.repos.d/google-chrome.repo && \
     rm /etc/yum.repos.d/fedora-cisco-openh264.repo && \
@@ -12,6 +12,11 @@ RUN rm /etc/yum.repos.d/google-chrome.repo && \
 
 RUN /tmp/build.sh
 
+RUN rpm-ostree commit
+
+#   Start -zed build
+#     adding zfs support
+
 FROM bunsen AS bunsen-zed
 
 ARG IMAGE_NAME="${IMAGE_NAME}"
@@ -20,18 +25,5 @@ COPY --from=ghcr.io/mitchejj/zfs-kmods:38 *.rpm /tmp/zfs/
 
 RUN rpm-ostree install /tmp/zfs/*.rpm
 
-
-# RUN cat /tmp/override/** | xargs rpm-ostree override remove && \
-#     ostree container commit && \
-#     rm override
-
-
-# RUN cat /tmp/install/** | xargs rpm-ostree install && \
-#     rm -r /tmp/install && \
-#     ostree container commit
-
-# RUN REPOS=($(ls /tmp/repos/)) && \
-#   echo ${REPOS[@]} && \
-#   for s in "${$REPOS[@]}" ; do \ 
-#   echo s \
-# done 
+RUN rm -rf /tmp/* && \
+    rpm-ostree commit
