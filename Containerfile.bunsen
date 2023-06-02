@@ -12,7 +12,7 @@ RUN rm /etc/yum.repos.d/google-chrome.repo && \
 
 RUN /tmp/build.sh
 
-RUN rpm-ostree commit
+RUN ostree commit
 
 #   Start -zed build
 #     adding zfs support
@@ -26,4 +26,4 @@ COPY --from=ghcr.io/mitchejj/zfs-kmods:38 *.rpm /tmp/zfs/
 RUN rpm-ostree install /tmp/zfs/*.rpm
 
 RUN rm -rf /tmp/* && \
-    rpm-ostree commit
+    ostree commit

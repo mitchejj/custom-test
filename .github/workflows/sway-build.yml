@@ -19,7 +19,7 @@ on:
       - '**.txt'
       - 'Containerfile.beaker'
       - 'beaker/**'
-      - 'build.sh'
+      - '.github/workflows/ng-build.yml'
   workflow_dispatch:
 
 env:

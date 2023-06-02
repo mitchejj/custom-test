@@ -19,7 +19,7 @@ on:
       - '**.txt'
       - 'Containerfile.bunsen'
       - 'bunsen/**'
-      - 'build.sh'
+      - '.github/workflows/sway-build.yml'
   workflow_dispatch:
 
 env:
