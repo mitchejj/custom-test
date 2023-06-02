@@ -3,7 +3,7 @@ ldns-utils
 ncdu
 neovim
 NetworkManager-tui
-nm-connection-editor-desktop
+nm-connection-editor
 podman-tui
 power-profiles-daemon
 ripgrep

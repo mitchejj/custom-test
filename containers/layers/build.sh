@@ -20,7 +20,7 @@ rpm-ostree override remove ${OVERRIDE[@]}
 echo 'Packages that where not removed'
 # Should feed only what was sent thru rpm-ostree override remove to make this
 # check but using the whole data set seems like a nice double check
-echo ($(rpm -qa --queryformat='%{NAME} ' $(cat /tmp/override/**)))
+# echo $(rpm -qa --queryformat='%{NAME} ' $(cat /tmp/override/**))
  
 rm -r /tmp/override/
 
