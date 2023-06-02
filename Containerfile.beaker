@@ -13,11 +13,10 @@ RUN rm /etc/yum.repos.d/google-chrome.repo && \
 
 RUN /tmp/build.sh
 
-RUN ostree commit
+RUN ostree container commit
 
 #   Start -zed build
 #     adding zfs support
-
 FROM beaker AS beaker-zed
 
 ARG IMAGE_NAME="${IMAGE_NAME}"
@@ -27,4 +26,4 @@ COPY --from=ghcr.io/mitchejj/zfs-kmods:38 *.rpm /tmp/zfs/
 RUN rpm-ostree install /tmp/zfs/*.rpm
 
 RUN rm -rf /tmp/* && \
-    ostree commit
+    ostree container commit
