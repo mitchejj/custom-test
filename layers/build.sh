@@ -1,3 +1,7 @@
+#!/bin/sh
+
+set -ouex pipefail
+
 # Containerfile will copy:
 #   override: files of packages to remove
 #   install:  files of packages to install

@@ -12,6 +12,8 @@ RUN rm /etc/yum.repos.d/google-chrome.repo && \
 
 RUN /tmp/build.sh
 
+RUN /tmp/post.sh
+
 RUN ostree container commit
 
 #   Start -zed build
@@ -22,8 +24,10 @@ FROM bunsen AS bunsen-zed
 ARG IMAGE_NAME="${IMAGE_NAME}"
 
 COPY --from=ghcr.io/mitchejj/zfs-kmods:38 *.rpm /tmp/zfs/
+COPY ./layers/post-zed.sh /tmp
 
 RUN rpm-ostree install /tmp/zfs/*.rpm
+RUN /tmp/post-zfs.sh
 
 RUN rm -rf /tmp/* && \
     ostree container commit
