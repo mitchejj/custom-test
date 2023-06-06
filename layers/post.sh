@@ -2,5 +2,7 @@
 
 set -ouex pipefail
 
-systemctl enable --now sshd.socket
+systemctl enable remote-fs.target
+systemctl enable sshd.socket
 systemctl enable systemd-timesyncd.service
+fc-cache -f /usr/share/fonts
