@@ -15,9 +15,7 @@ RUN /tmp/build.sh
 #RUN /tmp/post.sh
 RUN systemctl enable remote-fs.target
 RUN systemctl enable sshd.socket
-RUN timedatectl set-ntp true
-
-#systemctl enable systemd-timesyncd.service
+RUN systemctl enable systemd-timesyncd.service
 # fc-cache -f /usr/share/fonts
 
 RUN ostree container commit
