@@ -12,7 +12,11 @@ RUN rm /etc/yum.repos.d/google-chrome.repo && \
 
 RUN /tmp/build.sh
 
-RUN /tmp/post.sh
+#RUN /tmp/post.sh
+RUN systemctl enable remote-fs.target
+RUN systemctl enable sshd.socket
+#systemctl enable systemd-timesyncd.service
+# fc-cache -f /usr/share/fonts
 
 RUN ostree container commit
 
