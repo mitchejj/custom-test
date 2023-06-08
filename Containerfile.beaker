@@ -27,7 +27,7 @@ COPY ./layers/post-zed.sh /tmp
 
 RUN rpm-ostree install /tmp/zfs/*.rpm
 
-RUN /tmp/post-zed.sh
+#RUN /tmp/post-zed.sh
 
 RUN rm -rf /tmp/* && \
     ostree container commit
