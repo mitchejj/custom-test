@@ -28,7 +28,6 @@ echo 'Packages that where not removed'
  
 rm -r /tmp/override/
 
-
 cat /tmp/install/** | xargs rpm-ostree install
 rm -r /tmp/install
 
@@ -44,7 +43,3 @@ sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-free.repo
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-free-updates.repo
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree.repo
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-updates.repo
-
-rm -rf /tmp/*
-rm -rf /var/*
-

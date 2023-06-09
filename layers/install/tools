@@ -6,6 +6,7 @@ NetworkManager-tui
 nm-connection-editor
 podman-tui
 power-profiles-daemon
+powertop
 ripgrep
 vifm
 wavemon
