@@ -12,9 +12,11 @@ RUN rm /etc/yum.repos.d/google-chrome.repo && \
 
 RUN /tmp/build.sh
 
+RUN systemctl enable getty@tty1.service && \
+    cp /tmp/etc/sysctl.d/*.conf /etc/sysctl.d/
+
 RUN /tmp/post.sh
 
-RUN systemctl enable getty@tty1.service
 
 RUN ostree container commit
 
