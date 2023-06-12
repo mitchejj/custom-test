@@ -27,7 +27,7 @@ FROM beaker AS beaker-zed
 # ARG IMAGE_NAME="${IMAGE_NAME}"
 
 COPY --from=ghcr.io/mitchejj/zfs-kmods:38 *.rpm /tmp/zfs/
-
+COPY ./zed /tmp
 RUN rpm-ostree install /tmp/zfs/*.rpm && \
   cp /tmp/etc/sysctl.d/*.conf /etc/sysctl.d/
 
