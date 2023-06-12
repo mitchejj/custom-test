@@ -2,8 +2,8 @@
 
 #set -ouex pipefail
 
-#cd /etc/yum.repos.d/ && curl -LO https://copr.fedorainfracloud.org/coprs/axeld/eww/repo/fedora-$(rpm -E %fedora)/axeld-eww-fedora-$(rpm -E %fedora).rep
+cd /etc/yum.repos.d/ && curl -LO https://copr.fedorainfracloud.org/coprs/axeld/eww/repo/fedora-$(rpm -E %fedora)/axeld-eww-fedora-$(rpm -E %fedora).rep
 
-#rpm-ostree install -y eww
+rpm-ostree install -y eww
 
-#sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/axeld-eww-fedora-$(rpm -E %fedora).rep
+sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/axeld-eww-fedora-$(rpm -E %fedora).rep

@@ -1,14 +1,12 @@
-FROM ghcr.io/ublue-os/sericea-main:38 as beaker
+#FROM ghcr.io/ublue-os/sericea-main:38 as beaker
+FROM quay.io/fedora-ostree-desktops/base:38 as beaker
 
 ARG IMAGE_NAME="${IMAGE_NAME}"
 
+COPY --from=ghcr.io/ublue-os/config:latest /rpms/ublue-os-update-services.noarch.rpm /tmp/ublue-os-update-services.noarch.rpm
+
 COPY ./layers /tmp
 COPY ./beaker /tmp
-
-RUN rm /etc/yum.repos.d/google-chrome.repo && \
-    rm /etc/yum.repos.d/fedora-cisco-openh264.repo && \
-    rm /etc/yum.repos.d/rpmfusion-nonfree-steam.repo && \
-    rm /etc/yum.repos.d/rpmfusion-nonfree-nvidia-driver.repo
 
 RUN /tmp/build.sh
 
@@ -20,17 +18,18 @@ RUN /tmp/post.sh
 
 RUN ostree container commit
 
-############################################
-##   Start -zed build
-##     adding zfs support
-############################################
+#############################################
+###   Start -zed build
+###     adding zfs support
+#############################################
 FROM beaker AS beaker-zed
 
-ARG IMAGE_NAME="${IMAGE_NAME}"
+# ARG IMAGE_NAME="${IMAGE_NAME}"
 
 COPY --from=ghcr.io/mitchejj/zfs-kmods:38 *.rpm /tmp/zfs/
 
-RUN rpm-ostree install /tmp/zfs/*.rpm
+RUN rpm-ostree install /tmp/zfs/*.rpm && \
+  cp /tmp/etc/sysctl.d/*.conf /etc/sysctl.d/
 
 RUN rm -rf /tmp/* && \
     ostree container commit

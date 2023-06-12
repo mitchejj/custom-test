@@ -6,7 +6,7 @@ YA custom Fedora operating system using [OCI/Docker containers as a transport an
 
 ## What is this?
 
-My first Linux system that I enjoyed using was CrunchBang Linux, this is what eventually made me switch to linux full time. One of the 'fun' aspects of the distro was using Muppet characters as release names. Using [uBlue](http://github.com/uble-os/main) [sericea][ublue-sericea] Bunsen is my layering of features. Eventually I plan on also using [base][ublue-base]) to build a [Hyprland](https://hyprland.org/) version, Beaker, that I can play around with.
+My first Linux system that I enjoyed using was CrunchBang Linux, this is what eventually made me switch to linux full time. One of the 'fun' aspects of the distro was using Muppet characters as release names. ~~Using [uBlue](http://github.com/uble-os/main) [sericea][ublue-sericea] Bunsen is my layering of features. Eventually I plan on also using [base][ublue-base]) to build a [Hyprland](https://hyprland.org/) version, Beaker, that I can play around with.~~
 
 Both have a \*-zed option for built in zfs. 
 
@@ -34,7 +34,7 @@ To rebase an existing Silverblue/Kinoite machine to the latest release (37):
 1. Open a terminal and use one of the following commands to rebase the OS:
 
     
-#### Bunsen (Sway derived from Sericea)  
+#### Bunsen (Sway derived from uble-sericea)  
 
     sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/mitchejj/bunsen:38
 
@@ -43,7 +43,7 @@ or
     sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/mitchejj/bunsen-zed:38
 
 
-#### Beaker (Hyprland derived from Base)
+#### Beaker (Hyprland derived from fedora-ostree-desktops)
 
 
     sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/mitchejj/beaker:38

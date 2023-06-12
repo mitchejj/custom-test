@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -ouex pipefail
+
+cd /tmp
+rpm -ivh ublue-os-update-services.noarch.rpm
