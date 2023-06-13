@@ -4,6 +4,7 @@ hyphen
 mtools
 net-tools
 NetworkManager
+NetworkManager-config-connectivity-fedora
 openssl
 podman-plugins
 smartmontools
