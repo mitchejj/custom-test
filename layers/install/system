@@ -1,4 +1,13 @@
+flex
+fprintd
+hyphen
+mtools
+net-tools
+NetworkManager
 openssl
+podman-plugins
 smartmontools
 symlinks
+tcpdump
+woff2
 zstd
