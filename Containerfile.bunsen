@@ -21,11 +21,12 @@ RUN ostree container commit
 ############################################
 FROM bunsen AS bunsen-zed
 
-ARG IMAGE_NAME="${IMAGE_NAME}"
+# ARG IMAGE_NAME="${IMAGE_NAME}"
 
 COPY --from=ghcr.io/mitchejj/zfs-kmods:38 *.rpm /tmp/zfs/
-
-RUN rpm-ostree install /tmp/zfs/*.rpm
+COPY ./zed /tmp
+RUN rpm-ostree install /tmp/zfs/*.rpm && \
+  cp /tmp/etc/sysctl.d/*.conf /etc/sysctl.d/
 
 RUN rm -rf /tmp/* && \
     ostree container commit
