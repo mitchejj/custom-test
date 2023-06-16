@@ -29,4 +29,5 @@ RUN rpm-ostree install /tmp/zfs/*.rpm && \
   cp /tmp/etc/sysctl.d/*.conf /etc/sysctl.d/
 
 RUN rm -rf /tmp/* && \
+    rm -rf /var/* && \
     ostree container commit
