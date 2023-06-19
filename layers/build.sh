@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/env sh
 
 set -ouex pipefail
 
@@ -52,3 +52,10 @@ unset REPOS
 ########################################
 cat /tmp/install/** | xargs rpm-ostree install
 rm -r /tmp/install
+
+########################################
+#   Build Scrips 
+########################################
+
+/tmp/build.sh.d/nerd-font.sh
+
