@@ -1,6 +1,7 @@
 distrobox
 fzf
 git
+gnome-disk-utility
 just
 ldns-utils
 lshw
@@ -15,6 +16,7 @@ podman-tui
 power-profiles-daemon
 powertop
 ripgrep
+rmlint
 tmux
 traceroute
 tty-copy
