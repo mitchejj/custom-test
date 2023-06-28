@@ -13,7 +13,7 @@ RUN /tmp/build.sh
 # Revert to older version of ostree to fix Flatpak installations
 # https://github.com/flatpak/flatpak/issues/5452#issuecomment-1604303145 
 # https://github.com/ostreedev/ostree/issues/2900
-RUN rpm-ostree override replace https://bodhi.fedoraproject.org/updates/FEDORA-2023-cab8a89753
+# RUN rpm-ostree override replace https://bodhi.fedoraproject.org/updates/FEDORA-2023-cab8a89753
 
 RUN systemctl enable getty@tty1.service && \
     cp /tmp/etc/sysctl.d/*.conf /etc/sysctl.d/
