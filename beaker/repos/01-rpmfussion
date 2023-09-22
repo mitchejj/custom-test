@@ -4,37 +4,38 @@ set -ouex pipefail
 
 # See:
 #   https://rpmfusion.org/Howto/OSTree
+if grep -qv "39" <<< "${FEDORA_MAJOR_VERSION}"; then
+  rpm-ostree install \
+    https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
+    https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-rpm-ostree install \
-  https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
-  https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+  sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-steam.repo
+  sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-nvidia-driver.repo
 
-sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-steam.repo
-sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-nvidia-driver.repo
+  # Intel
+  rpm-ostree install intel-media-driver
 
-# Intel
-rpm-ostree install intel-media-driver
+  #AMD
+  rpm-ostree override remove mesa-va-drivers --install mesa-va-drivers-freeworld
+  # rpm-ostree override remove mesa-vdpau-drivers --install mesa-vdpau-drivers-freeworld
+  rpm-ostree install mesa-va-drivers-freeworld
 
-#AMD
-rpm-ostree override remove mesa-va-drivers --install mesa-va-drivers-freeworld
-# rpm-ostree override remove mesa-vdpau-drivers --install mesa-vdpau-drivers-freeworld
-rpm-ostree install mesa-va-drivers-freeworld
+  rpm-ostree override remove \
+    libavcodec-free \
+    libavfilter-free \
+    libavformat-free \
+    libavutil-free \
+    libpostproc-free \
+    libswresample-free \
+    libswscale-free \
+    --install=ffmpeg \
+    --install=ffmpeg-libs \
+    --install=pipewire-codec-aptx
 
-rpm-ostree override remove \
-  libavcodec-free \
-  libavfilter-free \
-  libavformat-free \
-  libavutil-free \
-  libpostproc-free \
-  libswresample-free \
-  libswscale-free \
-  --install=ffmpeg \
-  --install=ffmpeg-libs \
-  --install=pipewire-codec-aptx
+  # rpm-ostree install gstreamer1-plugin-libav gstreamer1-plugins-bad-free-extras gstreamer1-plugins-bad-freeworld gstreamer1-plugins-ugly gstreamer1-vaapi pipewire-codec-aptx
 
-# rpm-ostree install gstreamer1-plugin-libav gstreamer1-plugins-bad-free-extras gstreamer1-plugins-bad-freeworld gstreamer1-plugins-ugly gstreamer1-vaapi pipewire-codec-aptx
-
-sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-free.repo
-sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-free-updates.repo
-sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree.repo
-sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-updates.repo
+  sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-free.repo
+  sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-free-updates.repo
+  sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree.repo
+  sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-updates.repo
+fi
