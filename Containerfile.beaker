@@ -1,3 +1,5 @@
+ARG FEDORA_MAJOR_VERSION="${FEDORA_MAJOR_VERSION:-38}"
+
 #FROM ghcr.io/ublue-os/sericea-main:38 as beaker
 FROM quay.io/fedora-ostree-desktops/base:${FEDORA_MAJOR_VERSION} as beaker
 
