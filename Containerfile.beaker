@@ -10,7 +10,6 @@ COPY --from=ghcr.io/ublue-os/config:latest /rpms/ublue-os-update-services.noarch
 COPY ./layers /tmp
 COPY ./beaker /tmp
 
-RUN /tmp/repos/viv
 RUN /tmp/build.sh
 
 # Revert to older version of ostree to fix Flatpak installations
