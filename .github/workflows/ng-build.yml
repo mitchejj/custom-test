@@ -37,11 +37,14 @@ jobs:
       fail-fast: false
       matrix:
         base_name: [beaker, beaker-zed]
-        major_version: [38]
+        major_version: [38, 39]
         include:
           - major_version: 38
             is_latest_version: true
             is_stable_version: true 
+          - major_version: 38
+            is_latest_version: true
+            is_stable_version: false 
     steps: 
       # Checkout push-to-registry action GitHub repository
       - name: Checkout Push to Registry action
