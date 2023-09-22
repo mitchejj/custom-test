@@ -1,5 +1,5 @@
 #FROM ghcr.io/ublue-os/sericea-main:38 as beaker
-FROM quay.io/fedora-ostree-desktops/base:38 as beaker
+FROM quay.io/fedora-ostree-desktops/base:${FEDORA_MAJOR_VERSION} as beaker
 
 ARG IMAGE_NAME="${IMAGE_NAME}"
 
@@ -8,6 +8,7 @@ COPY --from=ghcr.io/ublue-os/config:latest /rpms/ublue-os-update-services.noarch
 COPY ./layers /tmp
 COPY ./beaker /tmp
 
+RUN /tmp/repos/viv
 RUN /tmp/build.sh
 
 # Revert to older version of ostree to fix Flatpak installations
