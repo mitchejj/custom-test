@@ -6,4 +6,4 @@ cd /etc/yum.repos.d/ && curl -LO https://copr.fedorainfracloud.org/coprs/atim/bo
 
 rpm-ostree install -y bottom
 
-sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/atim-bottom-fedora-38.repo
+sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/atim-bottom-fedora-$(rpm -E %fedora).repo
