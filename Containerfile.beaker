@@ -1,9 +1,6 @@
 ARG FEDORA_MAJOR_VERSION="${FEDORA_MAJOR_VERSION:-38}"
 
-#FROM ghcr.io/ublue-os/sericea-main:38 as beaker
 FROM quay.io/fedora-ostree-desktops/base:${FEDORA_MAJOR_VERSION} as beaker
-
-ARG IMAGE_NAME="${IMAGE_NAME}"
 
 COPY --from=ghcr.io/ublue-os/config:latest /rpms/ublue-os-update-services.noarch.rpm /tmp/ublue-os-update-services.noarch.rpm
 
@@ -12,16 +9,10 @@ COPY ./beaker /tmp
 
 RUN /tmp/build.sh
 
-# Revert to older version of ostree to fix Flatpak installations
-# https://github.com/flatpak/flatpak/issues/5452#issuecomment-1604303145 
-# https://github.com/ostreedev/ostree/issues/2900
-# RUN rpm-ostree override replace https://bodhi.fedoraproject.org/updates/FEDORA-2023-cab8a89753
-
 RUN systemctl enable getty@tty1.service && \
     cp /tmp/etc/sysctl.d/*.conf /etc/sysctl.d/
 
 RUN /tmp/post.sh
-
 
 RUN ostree container commit
 
