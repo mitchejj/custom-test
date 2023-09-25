@@ -2,6 +2,9 @@
 
 set -ouex pipefail
 
+export FEDORA_BETA=39
+export RAWHIDE=40
+
 # Containerfile will copy:
 #   override: files of packages to remove
 #   install:  files of packages to install
@@ -9,7 +12,6 @@ set -ouex pipefail
 #   build.sh: this file
 
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/fedora-cisco-openh264.repo
-
 
 ########################################
 #   Overrides 
