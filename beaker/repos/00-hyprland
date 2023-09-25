@@ -2,7 +2,16 @@
 
 set -ouex pipefail
 
-cd /etc/yum.repos.d/ && curl -LO https://copr.fedorainfracloud.org/coprs/solopasha/hyprland/repo/fedora-$(rpm -E %fedora)/solopasha-hyprland-fedora-$(rpm -E %fedora).repo
+
+# if grep -qv "39" <<< "${FEDORA_MAJOR_VERSION}"; then
+# if grep -gv "$(rpm -E %fedora)" <<< "${FEDORA_MAJOR_VERSION}" ; then 
+
+if [[ "$(rpm -E %fedora)" != $RAWHIDE ]] ; then
+  cd /etc/yum.repos.d/ && curl -L https://copr.fedorainfracloud.org/coprs/solopasha/hyprland/repo/fedora-$(rpm -E %fedora)/solopasha-hyprland-fedora-$(rpm -E %fedora).repo -o solopasha-hyprland.repo
+else
+  cd /etc/yum.repos.d/ && curl -LO https://copr.fedorainfracloud.org/coprs/solopasha/hyprland/repo/fedora-rawhide/solopasha-hyprland-fedora-rawhide.repo -o solopasha-hyprland.repo
+  ls -la
+fi
 
 rpm-ostree override remove xorg-x11-server-Xwayland
 
@@ -21,4 +30,4 @@ rpm-ostree install -y \
   aylurs-gtk-shell \
   eww-wayland-git
 
-sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/solopasha-hyprland-fedora-$(rpm -E %fedora).repo
+sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/solopasha-hyprland.repo

@@ -11,15 +11,17 @@ rpm-ostree install \
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-steam.repo
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-nvidia-driver.repo
 
+# Install good bluetooth sound
+rpm-ostree install pipewire-codec-aptx
 # Intel
 rpm-ostree install intel-media-driver
 
 #AMD
 rpm-ostree override remove mesa-va-drivers --install mesa-va-drivers-freeworld
 # rpm-ostree override remove mesa-vdpau-drivers --install mesa-vdpau-drivers-freeworld
-rpm-ostree install mesa-va-drivers-freeworld
+# rpm-ostree install mesa-va-drivers-freeworld
 
-if grep -qv "39" <<< "${FEDORA_MAJOR_VERSION}"; then
+if [[ "$(rpm -E %fedora)" != $FEDORA_BETA   &&  "$(rpm -E %fedora)" != $RAWHIDE ]] ; then
   rpm-ostree override remove \
     libavcodec-free \
     libavfilter-free \
@@ -30,7 +32,6 @@ if grep -qv "39" <<< "${FEDORA_MAJOR_VERSION}"; then
     libswscale-free \
     --install=ffmpeg \
     --install=ffmpeg-libs \
-    --install=pipewire-codec-aptx
 
   # rpm-ostree install gstreamer1-plugin-libav gstreamer1-plugins-bad-free-extras gstreamer1-plugins-bad-freeworld gstreamer1-plugins-ugly gstreamer1-vaapi pipewire-codec-aptx
 fi
