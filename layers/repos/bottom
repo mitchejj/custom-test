@@ -9,7 +9,7 @@ if [[ "$(rpm -E %fedora)" != $RAWHIDE ]] ; then
   curl -L https://copr.fedorainfracloud.org/coprs/atim/bottom/repo/fedora-$(rpm -E %fedora)/atim-bottom-fedora-$(rpm -E %fedora).repo -o atim-bottom-fedora.repo
 else
   curl -L https://copr.fedorainfracloud.org/coprs/atim/bottom/repo/fedora-rawhide/atim-bottom-fedora-rawhide.repo -o atim-bottom-fedora.repo
-if
+fi
 
 rpm-ostree install -y bottom
 
