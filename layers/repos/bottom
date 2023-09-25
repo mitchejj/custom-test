@@ -2,8 +2,15 @@
 
 set -ouex pipefail
 
-cd /etc/yum.repos.d/ && curl -LO https://copr.fedorainfracloud.org/coprs/atim/bottom/repo/fedora-$(rpm -E %fedora)/atim-bottom-fedora-$(rpm -E %fedora).repo
+
+cd /etc/yum.repos.d/
+
+if [[ "$(rpm -E %fedora)" != $RAWHIDE ]] ; then
+  curl -L https://copr.fedorainfracloud.org/coprs/atim/bottom/repo/fedora-$(rpm -E %fedora)/atim-bottom-fedora-$(rpm -E %fedora).repo -o atim-bottom-fedora.repo
+else
+  curl -L https://copr.fedorainfracloud.org/coprs/atim/bottom/repo/fedora-rawhide/atim-bottom-fedora-rawhide.repo -o atim-bottom-fedora.repo
+if
 
 rpm-ostree install -y bottom
 
-sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/atim-bottom-fedora-$(rpm -E %fedora).repo
+sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/atim-bottom-fedora.repo
