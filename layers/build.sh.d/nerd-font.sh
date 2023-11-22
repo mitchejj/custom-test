@@ -11,7 +11,7 @@ CONF_DIR="/usr/share/fontconfig/conf.avail"
 
 
 REPO_URL="https://github.com/ryanoasis/nerd-fonts"
-VERSION=3.0.2
+VERSION=3.1.0
 REPO_PATH="patched-fonts/NerdFontsSymbolsOnly"
 FONTS=(
   "SymbolsNerdFont-Regular.ttf"
