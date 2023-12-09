@@ -13,8 +13,8 @@ else
 fi
 
 
-rpm-ostree install -y hyprland 
-# rpm-ostree override remove xorg-x11-server-Xwayland --install hyprland
+rpm-ostree override remove xorg-x11-server-Xwayland
+rpm-ostree install -y hyprland-git 
 
 #  hyprland-plugins (is multiple packages to select)
 # rpm-ostree override remove waybar
