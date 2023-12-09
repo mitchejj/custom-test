@@ -5,7 +5,6 @@ set -ouex pipefail
 
 # if grep -qv "39" <<< "${FEDORA_MAJOR_VERSION}"; then
 # if grep -gv "$(rpm -E %fedora)" <<< "${FEDORA_MAJOR_VERSION}" ; then 
-rpm-ostree install -y hyprland 
 if [[ "$(rpm -E %fedora)" != $RAWHIDE ]] ; then
   cd /etc/yum.repos.d/ && curl -L https://copr.fedorainfracloud.org/coprs/solopasha/hyprland/repo/fedora-$(rpm -E %fedora)/solopasha-hyprland-fedora-$(rpm -E %fedora).repo -o solopasha-hyprland.repo
 else
@@ -13,7 +12,9 @@ else
   ls -la
 fi
 
-rpm-ostree override remove xorg-x11-server-Xwayland
+
+# rpm-ostree install -y hyprland 
+rpm-ostree override remove xorg-x11-server-Xwayland --install hyprland
 
 #  hyprland-plugins (is multiple packages to select)
 # rpm-ostree override remove waybar
