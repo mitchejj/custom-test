@@ -17,7 +17,8 @@ rpm-ostree install pipewire-codec-aptx
 rpm-ostree install intel-media-driver
 
 #AMD
-rpm-ostree override remove mesa-va-drivers --install mesa-va-drivers-freeworld
+#rpm-ostree override remove mesa-va-drivers --install mesa-va-drivers-freeworld
+
 # rpm-ostree override remove mesa-vdpau-drivers --install mesa-vdpau-drivers-freeworld
 # rpm-ostree install mesa-va-drivers-freeworld
 
