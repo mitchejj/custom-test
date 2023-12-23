@@ -30,4 +30,5 @@ rpm-ostree install -y \
   aylurs-gtk-shell \
   eww-wayland-git
 
+sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/solopasha-libdrm.repo
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/solopasha-hyprland.repo
