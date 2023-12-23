@@ -26,8 +26,8 @@ FROM beaker AS beaker-zed
 
 COPY --from=ghcr.io/mitchejj/zfs-kmods:39 *.rpm /tmp/zfs/
 COPY ./zed /tmp
-RUN rpm-ostree install /tmp/zfs/*.rpm && \
+RUN /tmp/zfs-install.sh && \
   cp /tmp/etc/sysctl.d/*.conf /etc/sysctl.d/
 
-RUN rm -rf /tmp/* && \
+RUN rm -rf /tmp/* /var/* && \
     ostree container commit
