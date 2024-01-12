@@ -17,20 +17,25 @@ Both have a \*-zed option for built in zfs.
 ## Features
 
 - Finish with my quarks
-  - Remove guest VM support
+  - Remove
+    -guest VM support
+- Added
   - Tailscale
   - NeoVim
-  - git
+  - git (and GitHub CLI client)
   - tmux
   - vifm
   - Fonts (powerline-fonts, mozilla-fira, fira-code, google-noto, ibm-plex, jetbrains-mono)
 
 ### Hyprland (beaker build)
-[![Copr build status](https://copr.fedorainfracloud.org/coprs/solopasha/hyprland/package/hyprland/status_image/last_build.png)](https://copr.fedorainfracloud.org/coprs/solopasha/hyprland/package/hyprland/)
+[![Copr build status](https://copr.fedorainfracloud.org/coprs/solopasha/hyprland/package/hyprland/status_image/last_build.png)]
+
+The beaker build is offered up two versions, current Fedora stable (F39) and rawhide. The packages providing Hyprland support come from [copr:solopasha/hyprland](https://copr.fedorainfracloud.org/coprs/solopasha/hyprland/) ([git repo](https://github.com/solopasha/hyprlandRPM)); additionally the rawhide build using hyprland-git.
+
+(https://copr.fedorainfracloud.org/coprs/solopasha/hyprland/package/
 [solopasha/hyprlandRPM](https://github.com/solopasha/hyprlandRPM)
 
 ## How to use these:
-
 
 To rebase an existing Silverblue/Kinoite/Sericea machine to the latest release (38): 
 1. Download and install [Fedora Silverblue](https://silverblue.fedoraproject.org/download)
@@ -40,35 +45,34 @@ To rebase an existing Silverblue/Kinoite/Sericea machine to the latest release (
     
 #### Bunsen (Sway derived from uble-sericea)  
 
-    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/mitchejj/bunsen:38
+    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/mitchejj/bunsen:39
 
 or
     
-    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/mitchejj/bunsen-zed:38
+    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/mitchejj/bunsen-zed:39
 
 
 #### Beaker (Hyprland derived from fedora-ostree-desktops)
 
 
-    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/mitchejj/beaker:38
+    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/mitchejj/beaker:39
 
 or
 
-    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/mitchejj/beaker-zed:38
+    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/mitchejj/beaker-zed:39
 
-#### Make a change
-
-If you wish to fork this and make it your own where a few nice to knows
-
-WIP
 
 #### ZFS Support
 [![build-zfs-kmods](https://github.com/mitchejj/ostree-zfs-kmod/actions/workflows/build.yml/badge.svg)](https://github.com/mitchejj/ostree-zfs-kmod/actions/workflows/build.yml)
+
+ZFS support is only built against the latest stable Fedora release.
 
 Due to ongoing issues with intergration between the Linux kernel and zfs sometimes the zfs version may not always be up-to-date.
 
 The default mountpoint for a newly created zpool `tank` is `/tank` since the root filesystem is immutable the directory cannot be created. A new mount point needs to be selected. I would suggest `/mnt/tank`
 
+## Similar
+[Hyprgreen](https://github.com/hyprgreen/main)
 ## Verification
 
 These images are signed with sisgstore's [cosign](https://docs.sigstore.dev/cosign/overview/). You can verify the signature by downloading the `cosign.pub` key from this repo and running the following command:

@@ -17,9 +17,14 @@ fi
 rpm-ostree override remove xorg-x11-server-Xwayland
 
 # need to disable   hyprland-plugins 
+#  libdrm \
+if [[ "$(rpm -E %fedora)" != $RAWHIDE ]] ; then
+  rpm-ostree install -y hyprland
+else
+  rpm-ostree install -y hyprland-git
+fi
+
 rpm-ostree install -y \
-  hyprland \
-  libdrm \
   waybar \
   xdg-desktop-portal-hyprland \
   hyprland-contrib \

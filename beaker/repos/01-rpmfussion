@@ -14,7 +14,7 @@ sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-nvidia-drive
 # Install good bluetooth sound
 rpm-ostree install pipewire-codec-aptx
 # Intel
-rpm-ostree install intel-media-driver
+#rpm-ostree install intel-media-driver
 
 #AMD
 #rpm-ostree override remove mesa-va-drivers --install mesa-va-drivers-freeworld
