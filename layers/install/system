@@ -6,7 +6,6 @@ net-tools
 NetworkManager
 NetworkManager-config-connectivity-fedora
 openssl
-podman-plugins
 polkit-gnome
 setroubleshoot-server
 smartmontools
