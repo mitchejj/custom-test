@@ -11,18 +11,28 @@ rpm-ostree install \
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-steam.repo
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-nonfree-nvidia-driver.repo
 
-# Install good bluetooth sound
+# Install good bluetooth sound (always)
 rpm-ostree install pipewire-codec-aptx
-# Intel
-#rpm-ostree install intel-media-driver
+
+#Intel
+if [[ "$(rpm -E %fedora)" != $FEDORA_STABLE ]] ; then
+
+  rpm-ostree override remove libva-intel-media-driver --install=intel-media-driver
+#   #  libva-intel-drivers libva-utils
+else
+  rpm-ostree install intel-media-driver
+fi
 
 #AMD
-#rpm-ostree override remove mesa-va-drivers --install mesa-va-drivers-freeworld
+rpm-ostree override remove mesa-va-drivers --install mesa-va-drivers-freeworld.x86_64
 
-# rpm-ostree override remove mesa-vdpau-drivers --install mesa-vdpau-drivers-freeworld
-# rpm-ostree install mesa-va-drivers-freeworld
 
 if [[ "$(rpm -E %fedora)" != $FEDORA_BETA   &&  "$(rpm -E %fedora)" != $RAWHIDE ]] ; then
+
+  # installing mozilla-openh264 seems to be the only way to get ffmpey to install
+
+  sed -i 's@enabled=0@enabled=1@g' /etc/yum.repos.d/fedora-cisco-openh264.repo
+
   rpm-ostree override remove \
     libavcodec-free \
     libavfilter-free \
@@ -31,10 +41,14 @@ if [[ "$(rpm -E %fedora)" != $FEDORA_BETA   &&  "$(rpm -E %fedora)" != $RAWHIDE 
     libpostproc-free \
     libswresample-free \
     libswscale-free \
-    --install=ffmpeg \
-    --install=ffmpeg-libs \
+    --install=ffmpeg\
+    --install=ffmpeg-libs.x86_64 \
+    --install=libavcodec-freeworld \
+    --install=mozilla-openh264
 
-  # rpm-ostree install gstreamer1-plugin-libav gstreamer1-plugins-bad-free-extras gstreamer1-plugins-bad-freeworld gstreamer1-plugins-ugly gstreamer1-vaapi pipewire-codec-aptx
+  sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/fedora-cisco-openh264.repo
+
+  # rpm-ostree install gstreamer1-plugin-libav gstreamer1-plugins-bad-free-extras gstreamer1-plugins-bad-freeworld gstreamer1-plugins-ugly gstreamer1-vaapi
 fi
 
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-free.repo

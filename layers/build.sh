@@ -2,8 +2,9 @@
 
 set -ouex pipefail
 
-export FEDORA_BETA=39
-export RAWHIDE=40
+export FEDORA_STABLE=39
+export FEDORA_BETA=40
+export RAWHIDE=41
 
 # Containerfile will copy:
 #   override: files of packages to remove

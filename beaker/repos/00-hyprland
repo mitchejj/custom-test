@@ -19,9 +19,9 @@ rpm-ostree override remove xorg-x11-server-Xwayland
 # need to disable   hyprland-plugins 
 #  libdrm \
 if [[ "$(rpm -E %fedora)" != $RAWHIDE ]] ; then
-  rpm-ostree install -y hyprland
+  rpm-ostree install -y hyprland hyprland-plugins
 else
-  rpm-ostree install -y hyprland-git
+  rpm-ostree install -y hyprland-git hyprland-plugins-git
 fi
 
 rpm-ostree install -y \
@@ -32,6 +32,8 @@ rpm-ostree install -y \
   hyprpaper \
   hyprpicker \
   hyprshot  \
+  hypridle \
+  hyprlock \
   aylurs-gtk-shell \
   eww-wayland-git
 
