@@ -4,7 +4,7 @@ set -ouex pipefail
 
 
 KERNEL="$(rpm -q kernel --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}')"
-
-ls -lah /var
-rpm-ostree install /tmp/zfs/*.rpm
+RELEASE="$(rpm -q kernel --queryformat '-%{RELEASE}')"
+ls -lah /tmp/zfs
+rpm-ostree install /tmp/zfs/*${KERNEL}.rpm
 depmod -A ${KERNEL}
