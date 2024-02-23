@@ -30,19 +30,15 @@ Both have a \*-zed option for built in zfs.
 ### Hyprland (beaker build)
 [![Copr build status](https://copr.fedorainfracloud.org/coprs/solopasha/hyprland/package/hyprland/status_image/last_build.png)]
 
-The beaker build is offered up two versions, current Fedora stable (F39) and rawhide. The packages providing Hyprland support come from [copr:solopasha/hyprland](https://copr.fedorainfracloud.org/coprs/solopasha/hyprland/) ([git repo](https://github.com/solopasha/hyprlandRPM)); additionally the rawhide build using hyprland-git.
+The beaker build is typically offered up two versions, stable and rawhide. The Fedora base is provided via [fedora-ostree-desktops/base](https://quay.io/repository/fedora-ostree-desktops/base?tab=tags&tag=latest) Hyprland support is provided via [copr:solopasha/hyprland](https://copr.fedorainfracloud.org/coprs/solopasha/hyprland/) ([git repo](https://github.com/solopasha/hyprlandRPM)); rawhide builds also contain hyprland-git.
 
-(https://copr.fedorainfracloud.org/coprs/solopasha/hyprland/package/
-[solopasha/hyprlandRPM](https://github.com/solopasha/hyprlandRPM)
+#### Similar
+[Hyprgreen](https://github.com/hyprgreen/main)
 
 ## How to use these:
 
-To rebase an existing Silverblue/Kinoite/Sericea machine to the latest release (38): 
-1. Download and install [Fedora Silverblue](https://silverblue.fedoraproject.org/download)
-1. After you reboot you should [pin the working deployment](https://docs.fedoraproject.org/en-US/fedora-silverblue/faq/#_about_using_silverblue) so you can safely rollback.
-1. Open a terminal and use one of the following commands to rebase the OS:
+Rebase from an existing Fedora Atomic Desktop
 
-    
 #### Bunsen (Sway derived from uble-sericea)  
 
     sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/mitchejj/bunsen:39
@@ -71,13 +67,11 @@ Due to ongoing issues with intergration between the Linux kernel and zfs sometim
 
 The default mountpoint for a newly created zpool `tank` is `/tank` since the root filesystem is immutable the directory cannot be created. A new mount point needs to be selected. I would suggest `/mnt/tank`
 
-## Similar
-[Hyprgreen](https://github.com/hyprgreen/main)
+
+
 ## Verification
 
 These images are signed with sisgstore's [cosign](https://docs.sigstore.dev/cosign/overview/). You can verify the signature by downloading the `cosign.pub` key from this repo and running the following command:
 
     cosign verify --key cosign.pub ghcr.io/mitchejj/<image name>
-
-If you're forking this repo you should [read the docs](https://docs.github.com/en/actions/security-guides/encrypted-secrets) on keeping secrets in github. You need to [generate a new keypair](https://docs.sigstore.dev/cosign/overview/) with cosign. The public key can be in your public repo (your users need it to check the signatures), and you can paste the private key in Settings -> Secrets -> Actions.
 
