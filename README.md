@@ -27,6 +27,10 @@ Both have a \*-zed option for built in zfs.
   - vifm
   - Fonts (powerline-fonts, mozilla-fira, fira-code, google-noto, ibm-plex, jetbrains-mono)
 
+## IMPORTANT CHANGES
+
+I've decided with the release of F40 I will scale the Sway (Bunsen) build to a twice a week build. I am also thinking about changing the images names back to a sane naming scheme with the name of the compositor in the title.
+
 ### Hyprland (beaker build)
 [![Copr build status](https://copr.fedorainfracloud.org/coprs/solopasha/hyprland/package/hyprland/status_image/last_build.png)]
 
@@ -63,11 +67,13 @@ or
 
 ZFS support is only built against the latest stable Fedora release.
 
-Due to ongoing issues with intergration between the Linux kernel and zfs sometimes the zfs version may not always be up-to-date.
+Due to ongoing issues with integration between the Linux kernel and zfs sometimes the zfs version may not always be up-to-date.
 
 The default mountpoint for a newly created zpool `tank` is `/tank` since the root filesystem is immutable the directory cannot be created. A new mount point needs to be selected. I would suggest `/mnt/tank`
 
+## Other
 
+[Fedora Atomic Desktop Cheat Sheet](https://docs.fedoraproject.org/en-US/fedora-silverblue/_attachments/silverblue-cheatsheet.pdf)
 
 ## Verification
 
