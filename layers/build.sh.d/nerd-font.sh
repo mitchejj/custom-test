@@ -10,7 +10,7 @@ FONT_DIR="/usr/share/fonts/nerd-font"
 CONF_DIR="/usr/share/fontconfig/conf.avail"
 
 
-VERSION=3.1.1
+VERSION=3.2.1
 REPO_URL="https://github.com/ryanoasis/nerd-fonts"
 REPO_PATH="patched-fonts/NerdFontsSymbolsOnly"
 FONTS=(

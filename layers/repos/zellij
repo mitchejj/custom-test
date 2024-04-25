@@ -1,0 +1,17 @@
+#!/bin/sh
+
+set -ouex pipefail
+
+
+cd /etc/yum.repos.d/
+
+if [[ "$(rpm -E %fedora)" != $RAWHIDE ]] ; then
+  curl -L https://copr.fedorainfracloud.org/coprs/varlad/zellij
+/repo/fedora-$(rpm -E %fedora)/varlad-zellij-fedora-$(rpm -E %fedora).repo -o varlad-zellij-fedora.repo
+else
+  curl -L https://copr.fedorainfracloud.org/coprs/varlad/zellij/repo/fedora-rawhide/varlad-zellij-fedora-rawhide.repo -o varlad-zellij-fedora.repo
+fi
+
+rpm-ostree install -y zellij
+
+sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/varlad-zellij-fedora.repo
