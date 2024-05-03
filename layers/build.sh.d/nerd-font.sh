@@ -25,7 +25,11 @@ for font in ${FONTS[@]} ; do
   curl -L $URL --create-dirs -o $FONT_DIR/$font
 done
 
-chmod -R +x $FONT_DIR
+
+# 644
+chmod -R u=rw,g=r,o=r $FONT_DIR/
+# 755
+chmod chmod u=rwx,g=rx,o=rx $FONT_DIR
 curl -L $CONF_URL/$CONF_NAME -o $CONF_DIR/$CONF_NAME
 ## TO-DO link 10-nerd-font-symbols.conf into /etc/fonts/conf.d
 
