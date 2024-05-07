@@ -27,10 +27,12 @@ done
 
 
 # 644
-chmod -R u=rw,g=r,o=r $FONT_DIR/
+ls -la  $FONT_DIR/
+chmod u=rw,g=r,o=r $FONT_DIR/*.ttf
 # 755
 chmod u=rwx,g=rx,o=rx $FONT_DIR
 curl -L $CONF_URL/$CONF_NAME -o $CONF_DIR/$CONF_NAME
+ls -la  $FONT_DIR/
 ## TO-DO link 10-nerd-font-symbols.conf into /etc/fonts/conf.d
 
 
