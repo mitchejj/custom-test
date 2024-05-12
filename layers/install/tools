@@ -1,3 +1,4 @@
+NetworkManager-tui
 distrobox
 fzf
 git
@@ -8,7 +9,6 @@ lshw
 mtr
 ncdu
 neovim
-NetworkManager-tui
 nm-connection-editor
 nvme-cli
 nvtop
@@ -17,6 +17,7 @@ power-profiles-daemon
 powertop
 ripgrep
 rmlint
+tldr
 tmux
 traceroute
 trash-cli
