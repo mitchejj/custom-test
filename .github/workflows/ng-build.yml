@@ -15,6 +15,7 @@ on:
     branches:
       - quarks
     paths-ignore:
+      - '.justfile'
       - '**.md'
       - '**.txt'
       - 'Containerfile.bunsen'

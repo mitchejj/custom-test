@@ -29,7 +29,7 @@ Both have a \*-zed option for built in zfs.
 
 ## IMPORTANT CHANGES
 
-I've decided with the release of F40 I will scale the Sway (Bunsen) build to a twice a week build. I am also thinking about changing the images names back to a sane naming scheme with the name of the compositor in the title.
+I've decided with the release of F40 I will scale the Sway (Bunsen) build to a twice a week build, Tuesday and Friday. I am also thinking about changing the images names back to a sane naming scheme with the name of the compositor in the title.
 
 ### Hyprland (beaker build)
 [![Copr build status](https://copr.fedorainfracloud.org/coprs/solopasha/hyprland/package/hyprland/status_image/last_build.png)]

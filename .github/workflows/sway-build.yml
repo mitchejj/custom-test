@@ -10,11 +10,12 @@ on:
   #     - 'beaker/**'
   #     - 'build.sh'
   schedule:
-    - cron: '45 9 * * *'  # 9:45am UTC everyday
+    - cron: '45 9 * * 2,5'  # 9:45am UTC everyday
   push:
     branches:
       - quarks
     paths-ignore:
+      - '.justfile'
       - '**.md'
       - '**.txt'
       - 'Containerfile.beaker'
