@@ -2,7 +2,7 @@
 [![bunsen-builder](https://github.com/mitchejj/ostree-quarks/actions/workflows/sway-build.yml/badge.svg)](https://github.com/mitchejj/ostree-quarks/actions/workflows/sway-build.yml)
 [![beaker-builder](https://github.com/mitchejj/ostree-quarks/actions/workflows/ng-build.yml/badge.svg)](https://github.com/mitchejj/ostree-quarks/actions/workflows/ng-build.yml)
 
-YA custom Fedora operating system using [OCI/Docker containers as a transport and delivery mechanism](https://fedoraproject.org/wiki/Changes/OstreeNativeContainerStabley). Images are scheduled to build daily at 9:45 UTC, here is a [UTC Clock](https://time.is/UTC).
+A custom spin on the Fedora Atomic [OCI/Docker](https://fedoraproject.org/wiki/Changes/OstreeNativeContainerStabley). Images are scheduled to build at 9:45 UTC, here is a [UTC Clock](https://time.is/UTC).
 
 ## What is this?
 
