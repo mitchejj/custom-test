@@ -1,0 +1,35 @@
+ARG FEDORA_MAJOR_VERSION="${FEDORA_MAJOR_VERSION:-40}"
+# This, ARG BASE_IMAGE_URL, is done so the I can quickly test builds locally
+# using the .justfile -> just build hypr 40 and the build-arg will pass
+# BASE_IMAGE_URL=localhost/common-quark
+ARG BASE_IMAGE_URL="${BASE_IMAGE_URL:-quay.io/fedora-ostree-desktops/base}"
+FROM ${BASE_IMAGE_URL}:${FEDORA_MAJOR_VERSION} as hpr
+
+
+# COPY ./layers /tmp
+COPY ./base/build.sh* /tmp
+COPY ./base/build.sh.d /tmp/build.sh.d
+COPY ./hypr /tmp
+
+RUN /tmp/build.sh
+
+RUN systemctl enable getty@tty1.service && \
+    cp /tmp/etc/sysctl.d/*.conf /etc/sysctl.d/
+
+RUN ostree container commit
+
+#############################################
+###   Start -zed build
+###     adding zfs support
+#############################################
+# FROM beaker AS beaker-zed
+
+# # ARG IMAGE_NAME="${IMAGE_NAME}"
+
+# COPY --from=ghcr.io/mitchejj/zfs-kmods:39 *.rpm /tmp/zfs/
+# COPY ./zed /tmp
+# RUN /tmp/zfs-install.sh && \
+#   cp /tmp/etc/sysctl.d/*.conf /etc/sysctl.d/
+
+# RUN rm -rf /tmp/* /var/* && \
+#     ostree container commit

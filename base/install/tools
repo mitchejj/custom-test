@@ -2,7 +2,6 @@ NetworkManager-tui
 distrobox
 fzf
 git
-gnome-disk-utility
 just
 ldns-utils
 lshw

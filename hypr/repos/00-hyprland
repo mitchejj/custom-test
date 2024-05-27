@@ -2,30 +2,22 @@
 
 set -ouex pipefail
 
-# if grep -qv "39" <<< "${FEDORA_MAJOR_VERSION}"; then
-# if grep -gv "$(rpm -E %fedora)" <<< "${FEDORA_MAJOR_VERSION}" ; then 
 if [[ "$(rpm -E %fedora)" != $RAWHIDE ]] ; then
-  cd /etc/yum.repos.d/ && curl -L https://copr.fedorainfracloud.org/coprs/solopasha/libdrm/repo/fedora-$(rpm -E %fedora)/solopasha-libdrm-fedora-$(rpm -E %fedora).repo -o solopasha-libdrm.repo
+  # cd /etc/yum.repos.d/ && curl -L https://copr.fedorainfracloud.org/coprs/solopasha/libdrm/repo/fedora-$(rpm -E %fedora)/solopasha-libdrm-fedora-$(rpm -E %fedora).repo -o solopasha-libdrm.repo
   cd /etc/yum.repos.d/ && curl -L https://copr.fedorainfracloud.org/coprs/solopasha/hyprland/repo/fedora-$(rpm -E %fedora)/solopasha-hyprland-fedora-$(rpm -E %fedora).repo -o solopasha-hyprland.repo
 else
-  cd /etc/yum.repos.d/ && curl -L https://copr.fedorainfracloud.org/coprs/solopasha/libdrm/repo/fedora-rawhide/solopasha-libdrm-fedora-rawhide.repo -o solopasha-libdrm.repo
+  # cd /etc/yum.repos.d/ && curl -L https://copr.fedorainfracloud.org/coprs/solopasha/libdrm/repo/fedora-rawhide/solopasha-libdrm-fedora-rawhide.repo -o solopasha-libdrm.repo
   cd /etc/yum.repos.d/ && curl -L https://copr.fedorainfracloud.org/coprs/solopasha/hyprland/repo/fedora-rawhide/solopasha-hyprland-fedora-rawhide.repo -o solopasha-hyprland.repo
   ls -la
 fi
 
-
-rpm-ostree override remove xorg-x11-server-Xwayland
-
-# need to disable   hyprland-plugins 
-#  libdrm \
 if [[ "$(rpm -E %fedora)" != $RAWHIDE ]] ; then
-  rpm-ostree install -y hyprland hyprland-plugins
+  rpm-ostree install -y hyprland hyprland-plugins waybar
 else
-  rpm-ostree install -y hyprland-git hyprland-plugins-git
+  rpm-ostree install -y hyprland-git hyprland-plugins-git waybar-git
 fi
 
 rpm-ostree install -y \
-  waybar \
   xdg-desktop-portal-hyprland \
   hyprland-contrib \
   hyprland-autoname-workspaces \
@@ -35,7 +27,7 @@ rpm-ostree install -y \
   hypridle \
   hyprlock \
   aylurs-gtk-shell \
-  eww-wayland-git
+  eww-git
 
-sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/solopasha-libdrm.repo
+# sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/solopasha-libdrm.repo
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/solopasha-hyprland.repo

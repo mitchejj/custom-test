@@ -1,26 +1,13 @@
-name: beaker-builder
+name: quarks-common
 on:
-  # pull_request:
-  #   branches:
-  #     - main
-  #   paths-ignore:
-  #     - '**.md'
-  #     - '**.txt'
-  #     - 'Containerfile.beaker'
-  #     - 'beaker/**'
-  #     - 'build.sh'
   schedule:
     - cron: '45 9 * * *'  # 9:45am UTC everyday
   push:
     branches:
       - quarks
-    paths-ignore:
-      - '.justfile'
-      - '**.md'
-      - '**.txt'
-      - 'Containerfile.bunsen'
-      - 'bunsen/**'
-      - '.github/workflows/sway-build.yml'
+    paths:
+      - './base/**/'
+      - './github/workflows/quarks-common.yml'
   workflow_dispatch:
 
 env:
@@ -29,7 +16,7 @@ env:
 jobs:
   push-ghcr:
     name: Build and push image
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
@@ -37,18 +24,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        base_name: [beaker, beaker-zed]
-        major_version: [39, 40, rawhide]
+        base_name: [quark-common]
+        major_version: [40, rawhide]
         include:
-          - major_version: 39
-            is_latest_version: true
-            is_stable_version: true 
           - major_version: 40
             is_latest_version: true
-            is_stable_version: false 
+            is_stable_version: true
           - major_version: rawhide
-            is_latest_version: true
-            is_stable_version: false 
+            is_latest_version: false
+            is_stable_version: false
     steps: 
       # Checkout push-to-registry action GitHub repository
       - name: Checkout Push to Registry action
@@ -59,7 +43,7 @@ jobs:
 
       # Build metadata
       - name: Image Metadata
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v4
         id: meta
         with:
           images: |
@@ -117,7 +101,7 @@ jobs:
         uses: redhat-actions/buildah-build@v2
         with:
           containerfiles: |
-            ./Containerfile.beaker
+            ./Containerfile.bunsen
           image: ${{ env.IMAGE_NAME }}
           tags: |
             ${{ steps.generate-tags.outputs.alias_tags }}
@@ -156,7 +140,7 @@ jobs:
             --disable-content-trust
 
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@v3
+        uses: docker/login-action@v2
         if: github.event_name != 'pull_request'
         with:
           registry: ghcr.io
@@ -164,7 +148,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       # Sign container
-      - uses: sigstore/cosign-installer@v3.1.2
+      - uses: sigstore/cosign-installer@v3.0.5
         if: github.event_name != 'pull_request'
 
       - name: Sign container image
@@ -182,3 +166,4 @@ jobs:
         if: github.event_name != 'pull_request'
         run: |
           echo "${{ toJSON(steps.push.outputs) }}"
+

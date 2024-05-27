@@ -4,9 +4,7 @@ hyphen
 mtools
 net-tools
 NetworkManager
-NetworkManager-config-connectivity-fedora
 openssl
-polkit-gnome
 setroubleshoot-server
 smartmontools
 symlinks

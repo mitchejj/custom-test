@@ -1,0 +1,106 @@
+name: Build Hypr
+on:
+  push:
+    branches:
+      - quarks
+    paths:
+      - './hypr/**'
+      - '.github/workflows/hypr-builder.yml'
+  workflow_dispatch:
+
+env:
+  IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
+
+jobs:
+  push-ghcr:
+    name: Build and push image
+    runs-on: ubuntu-latest #ubuntu-22.04
+    needs: quarks-common
+    if: success() || needs.quarks-common.outputs.triggered_by_schedule == 'true'
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    strategy:
+      fail-fast: false
+      matrix:
+        base_name: [hypr]
+        major_version: [40, rawhide]
+        include:
+          - major_version: 40
+            is_latest_version: true
+            is_stable_version: true
+          - major_version: rawhide
+            is_latest_version: false
+            is_stable_version: false
+    steps:
+      # Checkout push-to-registry action GitHub repository
+      - name: Checkout Push to Registry action
+        uses: actions/checkout@v3
+
+      - name: Matrix Variables
+        run: echo "IMAGE_NAME=${{ matrix.base_name }}" >> $GITHUB_ENV
+
+      # Build metadata
+      - name: Image Metadata
+        uses: docker/metadata-action@v5
+        id: meta
+        with:
+          images: |
+            ${{ env.IMAGE_NAME }}
+          labels: |
+            org.opencontainers.image.title=${{ env.IMAGE_NAME }}
+            org.opencontainers.image.description=TBA
+            io.artifacthub.package.readme-url=http://github.com/mitchejj/
+
+      - name: Generate tags
+        id: generate-tags
+        shell: bash
+        run: |
+          # Generate a timestamp for creating an image version history
+          TIMESTAMP="$(date +%Y%m%d)"
+          MAJOR_VERSION="${{ matrix.major_version }}"
+          COMMIT_TAGS=()
+          BUILD_TAGS=()
+          # Have tags for tracking builds during pull request
+          SHA_SHORT="${GITHUB_SHA::7}"
+          COMMIT_TAGS+=("pr-${{ github.event.number }}-${MAJOR_VERSION}")
+          COMMIT_TAGS+=("${SHA_SHORT}-${MAJOR_VERSION}")
+          if [[ "${{ matrix.is_latest_version }}" == "true" ]] && \
+             [[ "${{ matrix.is_stable_version }}" == "true" ]]; then
+              COMMIT_TAGS+=("pr-${{ github.event.number }}")
+              COMMIT_TAGS+=("${SHA_SHORT}")
+          fi
+
+          BUILD_TAGS=("${MAJOR_VERSION}" "${MAJOR_VERSION}-${TIMESTAMP}")
+
+          if [[ "${{ matrix.is_latest_version }}" == "true" ]] && \
+             [[ "${{ matrix.is_stable_version }}" == "true" ]]; then
+              BUILD_TAGS+=("latest")
+          fi
+
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+              echo "Generated the following commit tags: "
+              for TAG in "${COMMIT_TAGS[@]}"; do
+                  echo "${TAG}"
+              done
+              alias_tags=("${COMMIT_TAGS[@]}")
+          else
+              alias_tags=("${BUILD_TAGS[@]}")
+          fi
+          echo "Generated the following build tags: "
+          for TAG in "${BUILD_TAGS[@]}"; do
+              echo "${TAG}"
+          done
+          echo "alias_tags=${alias_tags[*]}" >> $GITHUB_OUTPUT
+
+      # Build image using Buildah action
+      - name: Build Image
+        id: build_image
+        uses: redhat-actions/buildah-build@v2
+        with:
+          containerfiles: |
+            ./Containerfile.beaker
+          image: ${{ env.IMAGE_NAME }}
+          tags: |
+            ${{ steps.generate-tags.outputs.alias
