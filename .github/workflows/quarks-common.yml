@@ -4,7 +4,7 @@ on:
     - cron: '45 9 * * *'  # 9:45am UTC everyday
   push:
     branches:
-      - quarks
+      - refactor
     paths:
       - './base/**/'
       - './github/workflows/quarks-common.yml'
